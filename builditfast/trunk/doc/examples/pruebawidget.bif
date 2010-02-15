@@ -1,0 +1,43 @@
+<BifRoot>
+<Title1 TEXT="Ejemplos de Widgets de BIF"></Title1>
+<Title2 TEXT="Según la documentación de Bif version 3 al
+22/9/2003"></Title2>
+<Title3 TEXT="Copyleft 22/9/2003 - Adrián Staffolani"></Title3>
+
+<BifLink HREF="mailto:astaffolani@sme.com.ar"
+TEXT="astaffolani@sme.com.ar"></BifLink>
+
+<Title3 TEXT="Widgets Lateral y BifLinik"></Title3>
+<Lateral><BifLink HREF="http://www.gleducar.org.ar" TEXT="Gleducar"></BifLink>  </Lateral>
+
+<Title3 TEXT="Widget BifImage - Pone Imagen"></Title3>
+<BifImage NAME="Imagen1" ALT="Imagen1" SRC="../fotos/adrian.jpg"></BifImage>
+
+<Title3 TEXT="Widget BifText - Pone texto"></Title3>
+<BifText TEXT="Esto es el texto dentro de BifText"></BifText>
+
+<Title3 TEXT="Widget FileList - Lista archivos de un directorio"></Title3>
+<FileList REGEXP="\.mp3" DIR="/home/adrian/mp3"></FileList>
+
+<Title3 TEXT="Widget Titlebox"></Title3>
+<TitleBox title="Esto es el título del TitleBox">Esto es el contenido</TitleBox>
+<Title3 TEXT="Widget Titlebox2"></Title3>
+<TitleBox2 title="Esto es el título del TitleBox2">Esto es el contenido</TitleBox2>
+
+<Title3 TEXT="Widget Titlebox3"></Title3>
+<TitleBox3 title="Esto es el título del TitleBox3">Esto es el contenido</TitleBox3>
+	   
+<Title3 TEXT="Widget Titlebox4"></Title3>
+<TitleBox4 title="Esto es el título del TitleBox4">Esto es el
+contenido</TitleBox4>
+
+<Title3 TEXT="Widget TitlePara"></Title3>
+<TitlePara title="Esto es el título del TitlePara">Esto es el contenido</TitlePara>
+
+<Title3 TEXT="Widget ArrayTable"></Title3>
+<ArrayTable DATA="Columna 1, Columna 2, esto va en la columna1, esto
+va en la columna 2" COLS="2"></ArrayTable>
+
+<Title3 TEXT="Widget ArrayTable"></Title3>
+
+</BifRoot>

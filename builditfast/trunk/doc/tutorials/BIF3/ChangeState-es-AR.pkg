@@ -1,0 +1,66 @@
+<!DOCTYPE Book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+  <article>
+    <title>ChangeState es-AR</title>
+<para>
+		Lo que permite realizar ChangeState es resaltar ciertas partes
+		en lo que refiere a la visual de la aplicacion, cuando tal o cual
+		seccion esta abierta.
+</para>
+<para>
+		Por ejemplo al tener una botonera con diferentes secciones, por ejemplo
+		Home - Chat - Links , y cuando seleccion una seccion por ejemplo Links.
+		Se resalte de la siguiente manera: Home - Chat - [Links] , o en cambio si
+		la botonera esta compusta de imagenes entonces poner la imagen resaltada en
+		algun color indicando que se esta dentro de esa seccion y no otra.
+</para>
+<para>
+		Para poder utilizar la clase changestate dentro de nuestros Widgets, es necesario
+		confeccionar el codigo de nuestro widget de la siguiente manera
+<programlisting>
+&lt;?php
+class MyBotonLinks extends ChangeState {
+ function __construct($attrs = array()) {
+  if (! $attrs[&quot;REGEXP&quot;]) {
+   $attrs[&quot;REGEXP&quot;]='.*links\.php.*';
+  }
+  parent::__construct($attrs);
+ }
+}
+?&gt;
+</programlisting>
+		O sea que si el archivo links.php esta abierto nos representara el Widget
+		MyBotonLinks como seleccionado.
+</para>
+<para>
+		Los tpl necesario dentro de la skin para mostrar los diferentes estados del Widget
+		deben ser mybotonlinks-selected.tpl y mybotonlinks.tpl, con lo cual uno muestra su
+		estado comun, y otro los muestra seleccionado.
+		Por ejemplo aca se muestra el estado comun
+<programlisting>
+		&lt;b&gt;&lt;a href=&quot;links.php&quot;&gt;Links&lt;/a&gt;&lt;/b&gt;
+</programlisting>
+		Y aca se muestra el estado seleccionado
+<programlisting>
+		&lt;a href=&quot;links.php&quot;&gt;[Links]&lt;/a&gt;
+</programlisting>
+</para>
+<para>
+		Una forma practica de tenerlo en dentro de la aplicacion seria dentro de un
+		Widget que actuara como Botonera o algo por el estilo
+<programlisting>
+	&lt;BifContainer&gt;
+		&lt;MyBotonHome/&gt;&lt;MyBotonChat/&gt;&lt;MyBotonLinks/&gt;&lt;MyBotonAbout/&gt;
+	&lt;/BifContainer&gt;
+</programlisting>
+</para>
+
+
+<para>Comentarios, preguntas
+<ulink url="mailto:linuxvarela@yahoo.com.ar">Sergio</ulink>(linuxvarela_at_yahoo.com.ar).
+</para>
+<para>
+Referencias: Ver documentacion de BiF
+			 Bajar los ejemplos de changestate disponibles en el sitio web de
+			 <ulink url="http://bif.lunix.com.ar">http://bif.lunix.com.ar</ulink>
+</para>
+</article>

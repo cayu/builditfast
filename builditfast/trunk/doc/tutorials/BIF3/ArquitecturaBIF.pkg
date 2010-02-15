@@ -1,0 +1,98 @@
+<!DOCTYPE Book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+  <article>
+    <title>Arquitectura BIF</title>
+
+<para>
+Nocion de la composicion de BIF, y su entendimiento para llegar a el desarrollo
+de una aplicacion con el mismo.
+</para>
+
+
+<para> 
+Base:
+ PEAR
+ Conexion con Bases de Datos
+ Representacion de Skins
+ Autenticacion
+</para>
+
+<para>
+Componentes:
+ Persistencia de estado
+ IDM, Wizars, Login, etc.
+</para>
+
+<para>
+Widgets:
+ Clases abstractas que reciben contenidos
+</para>
+
+<para>
+Skins:
+ Templates que representan los widgets y sus contenidos
+</para>
+
+<para>
+Para encarar el desarrollo de una aplicacion desde cero es bueno antes
+bajar el ejemplo de bif-site
+</para>
+
+<para>
+bif-site
+Se compone de diferentes archivos y directorios
+<programlisting>
+index.php
+Contenido/index.bif
+bifConfig.inc.php
+skins.txt
+mapping.txt
+cache/tpl
+cache/rss
+</programlisting>.
+</para>
+
+<para>index.php es el archivo PHP que renderiza el archivo XML index.bif</para>
+<para>bifConfig.inc.php es el archivo de configuracion de BiF aqui se especifica
+la configuracion de ejecucion de bif, el acceso a base de datos, autenticacion
+</para>
+<para>
+skins.txt aqui se configuran las skins de bif, las mismas son apilables, las
+mismas van en orden de prioridad de uso, asi que si bif no encuentra un template
+en una probara con la skin que sigue
+</para>
+<para>
+mapping.txt aqui se configuraran los componentes a utilizar y parametros para ellos
+</para>
+<para>
+cache en este directorio se almacenan los caches para los templates de los skins,
+y a su vez los caches de los RSS, el mismo debe ser escribible chmod 777 cache
+</para>
+
+<para>
+<title>Que puedo hacer con BiF</title> 
+Con BiF puedes realizar complejas aplicaciones web en el menor plazo de tiempo
+posible teniendo ya  prearmadas cosas como:
+</para>
+<para>
+GoogleAPI: El poder el buscador Google en tu aplicacion
+</para>
+<para>
+Autenticacion: Un complejo sistema de usuarios, dividos en subniveles y privilegios
+</para>
+<para>
+IDM o ABM: Un subsistema de introduccion y modificacion de datos en BD
+</para>
+<para>
+Clases para persistencia de estado
+</para>
+<para>
+Wiki: un peque&ntilde;o wiki
+</para>
+<para>
+Tratamiento y creacion de formularios con validacion etc.
+</para>
+
+<para><title>FIXME: Falta terminar</title> 
+Sergio Cayuqueo
+</para>
+</article>

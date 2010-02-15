@@ -1,0 +1,1040 @@
+
+<!DOCTYPE Book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+<book lang="es">
+  <bookinfo>
+    <date>Septiembre de 2003</date>
+    <title><acronym>BIF</acronym> (Build It Fast)</title>
+    <subtitle>API Documentation</subtitle>
+    <releaseinfo>Version 0.1.20</releaseinfo>
+    <authorgroup>
+      <author>
+        <firstname>Nicolás</firstname>
+        <surname>César</surname>
+      </author>
+      <author>
+        <firstname>Lucas</firstname>
+        <surname>Di Pentima</surname>
+      </author>
+      <author>
+        <firstname>Sergio</firstname>
+        <surname>Cayuqueo</surname>
+      </author>
+    </authorgroup>
+    <address>http://www.lunix.com.ar/Bif.php</address>
+    <legalnotice>
+      <para>
+        Copyright 2003 Nicolás César, Lucas Di Pentima.
+
+        Permission is granted to copy, distribute and/or modify this
+        document under the terms of the GNU Free Documentation
+        License, Version 1.1 or any later version published by the
+        Free Software Foundation; with no Invariant Sections, with no
+        Front-Cover Texts, and with no Back-Cover Texts.  A copy of
+        the license is included in the section entitled "GNU Free
+        Documentation License".
+      </para>
+    </legalnotice>
+  </bookinfo>
+  <chapter>
+    <title id="FSMRoot">Widget <classname>FSMRoot</classname></title>
+      <para>File name: Widgets/FSM/FSMRoot.php</para>
+      <para>Extends: BifRoot</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="ChangeState">Widget <classname>ChangeState</classname></title>
+      <para>File name: Widgets/Content/ChangeState.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Widget ABSTRACTO para la creación de botones que seleccionan entre 2 estadosy en base a una expresion regular determinana con el "script name"si está seleccionado o no (distintos templates)</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>REGEXP:</parameter> Regular expresion to match script name to determinate if it should be selected.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>HREF:</parameter> link's href (click it)
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FromDotBif">Widget <classname>FromDotBif</classname></title>
+      <para>File name: Widgets/Content/FromDotBif.php</para>
+      <para>Extends: </para>
+      <para>Abstract class !!usage:class MyClass extends FromDotBif {  function MyClass($attrs = array()) {    $this-&gt;BifWidget($attrs);  }}and will display Contenido/miclass.bif UNLESS,  FILENAME is specifiedIf there are several dirs (attribute DIRS) will check where file exists. */class FromDotBif extends BifWidget {  function FromDotBif($attrs = array()) {    $this-&gt;BifWidget($attrs);  }    function draw() {    if (! $this-&gt;attributes["FILENAME"]  ) {      $this-&gt;attributes["FILENAME"] = $this-&gt;widgetName . '.bif';    }    if (! is_array($this-&gt;attributes["DIRS"]) && $this-&gt;attributes["DIRS"] != "") {      $this-&gt;attributes["DIRS"] = implode(',',$this-&gt;attributes["DIRS"] );    }    if (! $this-&gt;attributes["DIRS"] ) {      global $app_dir;      $this-&gt;attributes["DIRS"] = array("$app_dir/Contenido",					render_file(dirname(__FILE__)),					);    }    if ($filename = file_exists_in($this-&gt;attributes["FILENAME"],				   $this-&gt;attributes["DIRS"])) {      $links = render_file($filename); 	return $links-&gt;draw();         } else {      return "File ". $this-&gt;attributes["FILENAME"] .	" in ".implode (', ',$this-&gt;attributes["DIRS"]) .	" doesn't exists.";    }  }}?&gt;</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>DIRS:</parameter> coma separated values of dirs.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>FILENAME:</parameter> a file to 
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="LasNoticias">Widget <classname>LasNoticias</classname></title>
+      <para>File name: Widgets/Content/LasNoticias.php</para>
+      <para>Extends: MySQLList</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="Boton">Widget <classname>Boton</classname></title>
+      <para>File name: Widgets/Content/Boton.php</para>
+      <para>Extends: BifWidget</para>
+      <para></para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter> Texto del Enlace.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TARGET:</parameter> Target del enlace.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>HREF:</parameter> Direccion del enlace.
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="Noticia">Widget <classname>Noticia</classname></title>
+      <para>File name: Widgets/Content/Noticia.php</para>
+      <para>Extends: MySQLList</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="Lateral">Widget <classname>Lateral</classname></title>
+      <para>File name: Widgets/Content/Lateral.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Contenedor vertical pensado para utilizarse con botones</para>
+  </chapter>
+  <chapter>
+    <title id="FileList">Widget <classname>FileList</classname></title>
+      <para>File name: Widgets/File/FileList.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Lista los archivos de un directorio especificado</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>REGEXP:</parameter> Filtro a utilizar para los archivos. (ex. "\.tgz$")
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>DIR:</parameter> Ubicacion del directorio a listar.
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="ArrayTable">Widget <classname>ArrayTable</classname></title>
+      <para>File name: Widgets/Table/ArrayTable.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera una tabla con su contenido basado en un Array</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>DATA:</parameter> Cadenas de texto separadas por comas. Los primeros elementos de las columnas seran el encabezado.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>COLS:</parameter> Numero de columnas
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="TitleBox4">Widget <classname>TitleBox4</classname></title>
+      <para>File name: Widgets/Text/TitleBox4.php</para>
+      <para>Extends: BifContainer</para>
+      <para>A box with a defined title.</para>
+  </chapter>
+  <chapter>
+    <title id="TitlePara">Widget <classname>TitlePara</classname></title>
+      <para>File name: Widgets/Text/TitlePara.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Containains paragraph with a title usually holds BifRawTexts or similar.</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TITLE:</parameter>title
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="TitleBox2">Widget <classname>TitleBox2</classname></title>
+      <para>File name: Widgets/Text/TitleBox2.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Un contenedor o tabla con un titulo o encabezado definido.</para>
+  </chapter>
+  <chapter>
+    <title id="Title3">Widget <classname>Title3</classname></title>
+      <para>File name: Widgets/Text/Title3.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera un titulo en modo 3 basandose en un texto previamente dado</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter> Texto a utilizar como titulo
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="Title2">Widget <classname>Title2</classname></title>
+      <para>File name: Widgets/Text/Title2.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera un titulo en base a un texto</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter> Texto del titulo
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="Title1">Widget <classname>Title1</classname></title>
+      <para>File name: Widgets/Text/Title1.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera un Texto a modo titulo en modo 1</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter> Texto a utilizar como titulo
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="TitleBox">Widget <classname>TitleBox</classname></title>
+      <para>File name: Widgets/Text/TitleBox.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Un contenedor o tabla con un titulo definido.</para>
+  </chapter>
+  <chapter>
+    <title id="TitleBox3">Widget <classname>TitleBox3</classname></title>
+      <para>File name: Widgets/Text/TitleBox3.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Un contenedor on tabla con un titulo y  diferentes propiedades definidas.</para>
+  </chapter>
+  <chapter>
+    <title id="Para">Widget <classname>Para</classname></title>
+      <para>File name: Widgets/Text/Para.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Containains paragraphs usually holds BifRawTexts or similar.</para>
+  </chapter>
+  <chapter>
+    <title id="Box">Widget <classname>Box</classname></title>
+      <para>File name: Widgets/Text/Box.php</para>
+      <para>Extends: BifContainer</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="MySQLList">Widget <classname>MySQLList</classname></title>
+      <para>File name: Widgets/MySQL/MySQLList.php</para>
+      <para>Extends: BifWidget</para>
+      <para>This an abstract widget to display lists.the field name will be used in template file.is as simple as this:class MyList extens MySQLList {  function MyList($attrs = array()) {    $attrs['QUERY'] = "select nombre form padron";    $this-&gt;MySQLList($attrs);  }}and mylist.tpl ---------------------------&lt;!-- BEGIN item --&gt;{nombre}&lt;br&gt;&lt;!-- END item --&gt;---------------------------</para>
+  </chapter>
+  <chapter>
+    <title id="MySQLVar">Widget <classname>MySQLVar</classname></title>
+      <para>File name: Widgets/MySQL/MySQLVar.php</para>
+      <para>Extends: BifWidget</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="MySQLPara">Widget <classname>MySQLPara</classname></title>
+      <para>File name: Widgets/MySQL/MySQLPara.php</para>
+      <para>Extends: MySQLVar</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="MySQLTable">Widget <classname>MySQLTable</classname></title>
+      <para>File name: Widgets/MySQL/MySQLTable.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera una tabla basada en una consulta MySQL. It can use a parameter QUERY or set a result usingsetResult($result) method.</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>QUERY:</parameter> Consulta MySQL a mostrar
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>EMPTY:</parameter> Texto a mostrar si el resultado es nulo. (else is 'Ningún resultado' is used)
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="MySQLSelect">Widget <classname>MySQLSelect</classname></title>
+      <para>File name: Widgets/MySQL/MySQLSelect.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera una tabla en base a una consulta MySQL. It can use a parameter QUERY or set a result usingsetResult($result) method.</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>QUERY:</parameter> Consulta MySQL a mostrar
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FTDir">Widget <classname>FTDir</classname></title>
+      <para>File name: Widgets/FT/FTDir.php</para>
+      <para>Extends: FTItem</para>
+      <para>Listado de directorios a utilizar en un formularioLists a </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>REGEXP:</parameter> Tipo de filtro a utilizar para listar los archivos
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>DIR :</parameter> Directorio a listar
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FTPhone">Widget <classname>FTPhone</classname></title>
+      <para>File name: Widgets/FT/FTPhone.php</para>
+      <para>Extends: FTItem</para>
+      <para>Elemento pensado para introducir numeros de telefono en el formulario.</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter> VALUE1-VALUE2-VALUE3
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE1,VALUE2,VALUE3 are for country , state/province/region , and number:</parameter>VALUE1,VALUE2,VALUE3 are for country , state/province/region , and number
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter> Variable's name
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FTPassword">Widget <classname>FTPassword</classname></title>
+      <para>File name: Widgets/FT/FTPassword.php</para>
+      <para>Extends: FTItem</para>
+      <para>Genera un elemento para la entrada de passwords en el formulario del tipo FT,los parametros son los mismos que para FormPassword</para>
+  </chapter>
+  <chapter>
+    <title id="FTLink">Widget <classname>FTLink</classname></title>
+      <para>File name: Widgets/FT/FTLink.php</para>
+      <para>Extends: FTItem</para>
+      <para>Genera un enlace en el Formulario FTInherits FTItem parameters</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter> Texto del enlace.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TARGET:</parameter> Target del enlace.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>HREF:</parameter> Direccion del enlace.
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FTTextarea">Widget <classname>FTTextarea</classname></title>
+      <para>File name: Widgets/FT/FTTextarea.php</para>
+      <para>Extends: FTItem</para>
+      <para>Genera un textarea para el formulario FT, losparametros son los mismos que para FormTextarea</para>
+  </chapter>
+  <chapter>
+    <title id="FTText">Widget <classname>FTText</classname></title>
+      <para>File name: Widgets/FT/FTText.php</para>
+      <para>Extends: FTItem</para>
+      <para>Genera un elemento de entrada de texto para el formulario FT,los parametros son los mismos que para el WidGet FormText</para>
+  </chapter>
+  <chapter>
+    <title id="FTSubmit">Widget <classname>FTSubmit</classname></title>
+      <para>File name: Widgets/FT/FTSubmit.php</para>
+      <para>Extends: FTItem</para>
+      <para>Genera un elemento del tipo Submit para el formulario FT,los parametros son los mismos que para FormSubmit</para>
+  </chapter>
+  <chapter>
+    <title id="FTSelect">Widget <classname>FTSelect</classname></title>
+      <para>File name: Widgets/FT/FTSelect.php</para>
+      <para>Extends: FTItem</para>
+      <para>Implementes a FormSelect ready to use inside a FT</para>
+  </chapter>
+  <chapter>
+    <title id="FTMySQLSelect">Widget <classname>FTMySQLSelect</classname></title>
+      <para>File name: Widgets/FT/FTMySQLSelect.php</para>
+      <para>Extends: FTItem</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="FTItem">Widget <classname>FTItem</classname></title>
+      <para>File name: Widgets/FT/FTItem.php</para>
+      <para>Extends: BifWidget</para>
+      <para></para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>HELP:</parameter> Texto de ayuda en la tercer Columna
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>ITEM:</parameter>Normalmente un Form* para agregar al item
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>DESCRIPTION:</parameter>Descripcion previa al Campo de formulario
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FTDate">Widget <classname>FTDate</classname></title>
+      <para>File name: Widgets/FT/FTDate.php</para>
+      <para>Extends: FTItem</para>
+      <para>FTDate es pensado para usarlo como ingreso de fechas, no hace ningún tipo de contro.NOTA: está facilitado el metodo Application::getParameters() de la siguiente manera$bigint =  $_SESSION['_BifApplication']-&gt;getParamenter('dateMiVar');$bigint va a contener un numero de 14 digitos correspondiente al timestamp de 'MiVar': - especial para meter en la base de datos.</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter> Nombre de la variable
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FTCheckbox">Widget <classname>FTCheckbox</classname></title>
+      <para>File name: Widgets/FT/FTCheckbox.php</para>
+      <para>Extends: FTItem</para>
+      <para>Crea un conjunto de Checkbox para el tipo de formulario FT, los parametros son los mismos que para FTItem</para>
+  </chapter>
+  <chapter>
+    <title id="FT">Widget <classname>FT</classname></title>
+      <para>File name: Widgets/FT/FT.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Contenedor principal de los elemento de formulario del tipo FTFT es un acronimo de Form Table o Formulario en Tabla.O sea un formulario contenido en una tabla de tres columnasej.Columna 1Tipos de datos a introducirColumna 2Elemento del formularioColumna 3Descripcion a modo de ayudaAsi se veria en el navegadorNombre: ______  Introduzca su nombre aqui</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>ACTION:</parameter> Accion o script PHP o CGI a ejecutar
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>METHOD:</parameter> Metodo a utilizar POST o GET
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="BifTimestamp">Widget <classname>BifTimestamp</classname></title>
+      <para>File name: Widgets/Basic/BifTimestamp.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Imprime una fecha, y el tiempo, con formato</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>:</parameter>
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter>  a timestamp
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>http:</parameter>//ar.php.net/date
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>FORMAT:</parameter> a date format like. %d-%m-%Y
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="RowCnt">Widget <classname>RowCnt</classname></title>
+      <para>File name: Widgets/Basic/RowCnt.php</para>
+      <para>Extends: BifContainer</para>
+      <para>An horizontal container, it makes a new cell for each child. It has only one row.</para>
+  </chapter>
+  <chapter>
+    <title id="HTMLTag">Widget <classname>HTMLTag</classname></title>
+      <para>File name: Widgets/Basic/HTMLTag.php</para>
+      <para>Extends: BifContainer</para>
+      <para>special class ment to use in render so we can include XHTML in.bif files.</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>other attributes:</parameter> will be parsed as HTML attributes for the tag
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TAG:</parameter> HTML tag (Ex. 'TABLE', 'B', 'FONT', 'IMG')
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormTextarea">Widget <classname>FormTextarea</classname></title>
+      <para>File name: Widgets/Basic/FormTextarea.php</para>
+      <para>Extends: BifWidget</para>
+      <para>TextArea para introducir varias cadenas de texto en el formulario</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>ROWS:</parameter> rows
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter> Texto inicial dentro del elemento
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter> Nombre de la variable
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>COLS:</parameter> cols
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter> Texto descritivo del elemento se encuentra al costado
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormText">Widget <classname>FormText</classname></title>
+      <para>File name: Widgets/Basic/FormText.php</para>
+      <para>Extends: BifWidget</para>
+      <para></para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>MAXLENGTH:</parameter> Maximum input lenght
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter> Form's item's value
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>SIZE:</parameter> Size of the field
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter> Form's item's name
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT: Text next to field (usually 'Password:</parameter>')
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>ALT:</parameter> Alternative, for tips
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormSubmit">Widget <classname>FormSubmit</classname></title>
+      <para>File name: Widgets/Basic/FormSubmit.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Elemento del tipo submit para enviar los datos del formulario</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter> Texto a mostrar en el elemento (usually 'Send')
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter>  Nombre del elemento
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormSelect">Widget <classname>FormSelect</classname></title>
+      <para>File name: Widgets/Basic/FormSelect.php</para>
+      <para>Extends: BifContainer</para>
+      <para>It's a replacemente for html's select tagIt should only have FormSelectItem childs!aditionally you can call method addOption(value, description, selected) to  add options to the selection.</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter> Select's name
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormSelectItem">Widget <classname>FormSelectItem</classname></title>
+      <para>File name: Widgets/Basic/FormSelectItem.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Esta clase solo puede ser utilizada en conjunto con la clase FormSelect</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>SELECTED or CHECKED:</parameter> initially selected
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter> Value that will take the FormSelect
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>DESC:</parameter>  Texto descriptivo a mostrar
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormRadio">Widget <classname>FormRadio</classname></title>
+      <para>File name: Widgets/Basic/FormRadio.php</para>
+      <para>Extends: BifWidget</para>
+      <para></para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>SELECTED or CHECKED:</parameter> selects the button.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter> default value
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>DESC:</parameter>  Texto descriptivo del elemento. (It's some text next to it)
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter>  Nombre de la variable
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>ALT:</parameter> Texto alternativo a representar en los tips
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormPassword">Widget <classname>FormPassword</classname></title>
+      <para>File name: Widgets/Basic/FormPassword.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera un elemento de formulario apto para la entrada de passwords</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>MAXLENGTH:</parameter> Maximum input lenght
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter> Value del elemento
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>SIZE:</parameter> Tamaño del elemento en caracteres
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT: Texto descriptivo que sigue al elemento (usually 'Password:</parameter>')
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter> Nombre del elemento
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>ALT:</parameter> Texto alternativo para los tips
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormHidden">Widget <classname>FormHidden</classname></title>
+      <para>File name: Widgets/Basic/FormHidden.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera un objeto oculto en el formulario</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter> Value por default del elemento
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter> Nombre del elemento del formulario
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormCnt">Widget <classname>FormCnt</classname></title>
+      <para>File name: Widgets/Basic/FormCnt.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Genera los datos del formulario </para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>ACTION:</parameter> URL del CGI o script a usar 
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>METHOD:</parameter> metodo post o get
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="FormCheckbox">Widget <classname>FormCheckbox</classname></title>
+      <para>File name: Widgets/Basic/FormCheckbox.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera los elementos checkbox del formulario</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>VALUE:</parameter> 'on' or 'off'
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>SELECTED or CHECKED:</parameter> mostrar por defaul checkbox checked
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter> nombre del check box
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter> texto descriptivo que se muestra despues del checkbox
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="ColumnCnt">Widget <classname>ColumnCnt</classname></title>
+      <para>File name: Widgets/Basic/ColumnCnt.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Un contenedor vertical, it makes a new row for each child</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>WIDTH:</parameter>ancho de la columna total de la tabla
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="BifText">Widget <classname>BifText</classname></title>
+      <para>File name: Widgets/Basic/BifText.php</para>
+      <para>Extends: BifWidget</para>
+      <para>We pretend to use this widget for ALL text written in the page. So it will be easer (in a near future) to internationalize or to give special formats (like, write a image per character)It's very simple rigth now but it's build to make beter transformations</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter> Texto a mostrar por pantalla
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="BifTableCnt">Widget <classname>BifTableCnt</classname></title>
+      <para>File name: Widgets/Basic/BifTableCnt.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Genera una el codigo de una tabla</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>BORDER:</parameter> Borde de la tabla
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>CELLSPACING:</parameter> Cell spacing
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>CELLPADDING:</parameter> Cell padding
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>ALIGN:</parameter> Justificacion de la misma
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>WIDTH:</parameter> Ancho de la tabla
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="BifTableDataCnt">Widget <classname>BifTableDataCnt</classname></title>
+      <para>File name: Widgets/Basic/BifTableDataCnt.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Esta pensado para generar los tags &lt;td&gt;&lt;/td&gt; de las celdas decontenido</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>COLSPAN:</parameter> column span
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="BifTableRowCnt">Widget <classname>BifTableRowCnt</classname></title>
+      <para>File name: Widgets/Basic/BifTableRowCnt.php</para>
+      <para>Extends: BifContainer</para>
+      <para>Espara generar las columnas: &lt;tr&gt;&lt;/tr&gt;</para>
+  </chapter>
+  <chapter>
+    <title id="BifRawText">Widget <classname>BifRawText</classname></title>
+      <para>File name: Widgets/Basic/BifRawText.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Inserta texto crudo en la pagina</para>
+  </chapter>
+  <chapter>
+    <title id="BifLink">Widget <classname>BifLink</classname></title>
+      <para>File name: Widgets/Basic/BifLink.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Genera un Enlace a introducir en la pagina</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter>Texto del enlace.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TARGET:</parameter>Target de Enlace.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>HREF:</parameter>Direccion URL del enlace.
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="BifInclude">Widget <classname>BifInclude</classname></title>
+      <para>File name: Widgets/Basic/BifInclude.php</para>
+      <para>Extends: BifContainer</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="BifImage">Widget <classname>BifImage</classname></title>
+      <para>File name: Widgets/Basic/BifImage.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Generador de Tag para la insercion de imagenes en la pagina</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>NAME:</parameter>Nombre de la imagen a incrustar en la pagina.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>ALT:</parameter>Texto alternativo de la imagen.
+          </para>
+        </listitem>
+      </itemizedlist>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>SRC:</parameter>Ubicacion del archivo de imagen, el archivo debe existir, este es un parametro requerido. 
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="BifContainer">Widget <classname>BifContainer</classname></title>
+      <para>File name: Widgets/Base/widget.BifContainer.php</para>
+      <para>Extends: class BifContainer extends BifWidget{</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="BifRoot">Widget <classname>BifRoot</classname></title>
+      <para>File name: Widgets/Base/widget.BifRoot.php</para>
+      <para>Extends: BifContainer</para>
+      <para></para>
+  </chapter>
+  <chapter>
+    <title id="BifWarning">Widget <classname>BifWarning</classname></title>
+      <para>File name: Widgets/Base/widget.BifWarning.php</para>
+      <para>Extends: BifWidget</para>
+      <para>Widget para generar mensajes de alerta o error en el codigodel sitio</para>
+      <itemizedlist>
+        <listitem>
+          <para>
+            <parameter>TEXT:</parameter>Texto de alerta a mostrar.
+          </para>
+        </listitem>
+      </itemizedlist>
+  </chapter>
+  <chapter>
+    <title id="BifWidget">Widget <classname>BifWidget</classname></title>
+      <para>File name: Widgets/Base/widget.BifWidget.php</para>
+      <para>Extends: PEAR</para>
+      <para></para>
+  </chapter>
+
+</book>

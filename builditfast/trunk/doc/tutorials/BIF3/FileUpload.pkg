@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><!-- -*- xml -*- -->
+
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+       "/usr/share/sgml/docbook/xml-dtd-4.2/docbookx.dtd">
+
+  <article>
+    <title>File Uploading</title>
+
+    <para>
+We need to upload some files to our aplication. It's very simple to
+add IDM fields that include a file uploading directlly to our database.
+</para>
+
+<para> 
+For example an IDM that has a Description and a file sould have in
+it's fileds:
+<programlisting>
+  $this-&gt;fields = array(
+     array(&apos;id&apos;,&quot;int(11) NOT NULL  auto_increment PRIMARY KEY&quot;,
+           &apos;FTShow&apos;,&apos;&apos;,
+           &apos;&apos;,&apos;&apos;,true),
+     array(&apos;Attach&apos;,&quot;MediumBlob&quot;,
+           &apos;FTFile&apos;,&apos;&apos;,
+	   &apos;&apos;,&apos;base64_encode&apos;,false), //try true if it doesn't work... 
+     array(&apos;Attach_filename&apos;,&quot;varchar ( 255 )&quot;,
+           &apos;FormHidden&apos;,&apos;AT=&quot;OUTSIDE&quot;&apos;,
+           &apos;&apos;,&apos;&apos;,true),
+     array(&apos;Attach_filesize&apos;,&quot;varchar ( 255 )&quot;,
+           &apos;FormHidden&apos;,&apos;AT=&quot;OUTSIDE&quot;&apos;,
+           &apos;&apos;,&apos;&apos;,true),
+     array(&apos;Attach_filetype&apos;,&quot;varchar ( 255 )&quot;,
+           &apos;FormHidden&apos;,&apos;AT=&quot;OUTSIDE&quot;&apos;,
+           &apos;&apos;,&apos;&apos;,true),
+     array(&apos;Description&apos;,&quot;mediumtext NOT NULL&quot;,
+           &apos;FTTextarea&apos;,&apos;rows=&quot;5&quot; cols=&quot;50&quot;&apos;,
+           &apos;&apos;,&apos;&apos;,true));
+</programlisting>
+</para>
+
+    <para>now we could use that class (just like any other IDM class)
+    to insert, modify<footnote><para>As version 0.3.12, we still have
+    problems modifing files.</para></footnote> and delete. </para>
+
+    <para>If the user wants to download the file, we should make a
+    download.php script in our aplication similar to this:
+
+<programlisting>
+&lt;?php
+
+include_once(&apos;bifConfig.inc.php&apos;);
+
+if( ! (     $table= $_SESSION[&apos;_BifApplication&apos;]-&gt;getParameter(&apos;table&apos;) 
+	AND $id=    $_SESSION[&apos;_BifApplication&apos;]-&gt;getParameter(&apos;id&apos;)
+	AND $field= $_SESSION[&apos;_BifApplication&apos;]-&gt;getParameter(&apos;field&apos;)
+	AND $field_id= $_SESSION[&apos;_BifApplication&apos;]-&gt;getParameter(&apos;field_id&apos;)
+
+ ) ){
+  // TODO: write a nice little page saying invalid download
+  die(&apos;Invalid download!&apos;);
+}
+    // TODO: CHECK $table and $id $field .. etc.
+    // TODO: check if is in session... (so no other users can download arbitrary info)
+
+
+$query = &quot; SELECT $field,${field}_filename,${field}_filesize,${field}_filetype
+FROM $table
+WHERE
+$field_id = &apos;$id&apos;
+&quot;;
+
+// TODO: some other checks like if table.field is BLOB or similar
+
+$rst = $_SESSION[&apos;_BifApplication&apos;]-&gt;execQuery($query);
+
+// TODO: check if there is some prblems with the query, and report the error!
+
+$row = $rst-&gt;fetchRow(DB_FETCHMODE_ASSOC);
+
+header(&apos;Content-Type: &apos;.$row[&quot;${field}_filetype&quot;]);
+header(&quot;Content-Length: &quot;.$row[&quot;${field}_filesize&quot;]);
+header(&quot;Content-Disposition: attachment; filename=\&quot;&quot;.$row[&quot;${field}_filename&quot;].&quot;\&quot;&quot;); 
+print base64_decode($row[$field]);
+
+?&gt;
+</programlisting>
+</para>
+
+    <para>Now <ulink url="http://site/download.php?table=table&amp;id=1&amp;field_id=id&amp;field=Attach">http://site/download.php?table=table&amp;id=1&amp;field_id=id&amp;field=Attach</ulink>   will start downloading the file</para>
+
+<para>As you can see there is a lot of checking missing, but this is a
+start. You are welcome to join the development team so BIF</para>
+
+</article>

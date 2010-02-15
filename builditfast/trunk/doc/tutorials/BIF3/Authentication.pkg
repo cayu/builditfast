@@ -1,0 +1,152 @@
+<!DOCTYPE Book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+  <article>
+    <title>Authentication</title>
+
+<para>
+Now we have an application working, but there are different actors
+in our application. For example, visitors and
+administrators. Administrators are allowed to modify data from the
+application, they use IDM components. And visitors are allowed to see
+the application.
+</para>
+
+
+<para> 
+For an initial set up just add to your bifConfig.inc.php
+<programlisting>
+$bifcfg['Auth']['file'] = 'formfile.bif';
+$bifcfg['Auth']['mode'] = 'site';
+$bifcfg['Auth']['param'] = "mysql://user:password@localhost/database";
+$bifcfg['Auth']['table'] = "auth";
+$bifcfg['Auth']['reload'] = false;
+
+$bifcfg['Auth']['anonymous_username'] = 'anonymous';
+$bifcfg['Auth']['anonymous_level'] = '50';
+$bifcfg['Auth']['anonymous_keys'] = '';
+</programlisting>
+</para>
+
+<para>
+We'll need an 'auth' table!! so let's get this working with mysql:
+
+<programlisting>
+CREATE TABLE `auth` (
+  `username` varchar(250) NOT NULL default '',
+  `password` varchar(250) NOT NULL default '',
+  `keys` varchar(250) NOT NULL default '',
+  `level` int(6) NOT NULL default '10',
+  `habilitado` tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (`username`)
+) TYPE=MyISAM;
+
+#
+# this is username admin, password admin
+#
+INSERT INTO `auth` VALUES ('admin',
+       '21232f297a57a5a743894a0e4a801fc3',
+       'a', 100, 1);
+</programlisting>
+</para>
+
+<tip>
+<para>
+To use a diferent password, 
+<programlisting>
+php -r 'echo md5(password) . "\n";'
+</programlisting>
+at a shell and a good copy&amp;paste will do the trick.
+</para>
+</tip>
+
+<para>What is 
+<programlisting>$bifcfg['Auth']['mode'] = 'site';</programlisting>.
+There are two modes in BIF authentication: 'system' and 'site'.
+
+<important>system</important> is system wide authentication, that is
+every part of the application will need authentication, no anonymous
+users will be allowed. This is a backward compatibility feature but
+also a usefull for extranet applications.
+</para>
+
+    <para><important>site</important> is used to allow anonymous users
+to our application, but also there is a login (thats a
+username/password field with a login button) widget. When a user has
+to do special actions (for example administration).
+</para>
+
+<para>what's the name of that widget?
+<important>AuthStatus</important>. The Default skin will show
+username/password field for the anonymous (not logged user) and
+username logged, her level and keys, also a logout button for the
+rest.</para>
+
+<para>Great! you can try this by logging with username admin and
+password admin (if you used mysql code above). But what's the
+difference? Nothing. Yet.</para>
+
+<para>
+Try this index.bif (you already know how to use render_file()).
+<programlisting>
+&lt;BifRoot&gt;
+&lt;TitleBox title=&quot;only a few&quot; WidgetAccess=&quot;username = admin&quot;&gt;
+Only the 'admin user' can see this box.
+&lt;/TitleBox&gt;
+&lt;TitleBox title=&quot;for anyone&quot;&gt;
+Hello welcome to my site!! is open to everyone... come and enjoy.
+&lt;/TitleBox&gt;
+&lt;/BifRoot&gt;
+</programlisting>
+</para>
+
+<para>
+Start playing logging in and logging out.
+</para>
+
+<para>
+<title>WidgetAccess </title>
+You can see WidgetAccess="username = admin" in the example above, if a
+username is admin then she can see that Titlebox (and it's children).
+But there are others modifiers,
+
+<itemizedlist>
+	<listitem>
+	  'level': a number. For example, users are level 10, revisors
+	  are level 20 and admins are level 50.
+	  <programlisting>
+&lt;TitleBox title=&quot;20 and more&quot; WidgetAccess=&quot;level >= 20 &quot;&gt;
+&lt;/TitleBox&gt;
+	  </programlisting>
+	  will give access to revisors and admins. There are no
+	  predifined levels, use as you like (or you may not use it at all)
+	</listitem>
+
+	<listitem>
+	'keys': charactes. For example, users located in Argentina
+	have the key 'a'. So,
+	  <programlisting>
+&lt;TitleBox title=&quot;Argentinos&quot; WidgetAccess=&quot;keys = a&quot;&gt;
+&lt;/TitleBox&gt;
+	  </programlisting>
+	  will give access to Argentina to that widget, leaving the 
+          rest of the world outside
+	</listitem>
+</itemizedlist>
+this could be outdatted, for more details see BifWidget::hasAccess().
+</para> 
+
+
+<para>
+Also, you can combine Widget access with logical operators 'and', 'or', 'not' and 
+with parenthesis. And create complex expresions:
+<programlisting>
+(keys = a and level > 5) or (user = admin)
+</programlisting>
+is a valid widget access.
+</para>
+
+<para><title>Conclusion: </title> 
+
+With powerfull expresions you can change the look and functionality for a .bif without
+much pain. Easy maintenance has been the key for this feature, also provides flexibility.
+</para>
+</article>
