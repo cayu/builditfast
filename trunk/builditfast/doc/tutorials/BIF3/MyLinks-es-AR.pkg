@@ -1,0 +1,48 @@
+<!DOCTYPE Book PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+  <article>
+    <title>MySQL Links</title>
+<para>
+MyLinks es un widget que genera un listado de links basado en una consulta MySQL,
+tambien posee un IDM para su administracion.
+</para>
+<para>
+Para la incluci&oacute;n del mismo en un archivo .bif
+<programlisting>
+&lt;SQLLinks/&gt;
+</programlisting>
+La tabla MySQL
+<programlisting>
+DROP TABLE IF EXISTS links;
+CREATE TABLE links (
+  nombre varchar(100) NOT NULL default '',
+  url varchar(100) NOT NULL default '',
+  descripcion varchar(255) NOT NULL,
+  id int(4) NOT NULL auto_increment,
+  habilitado tinyint(1) NOT NULL default '1',
+  PRIMARY KEY  (id)
+) TYPE=MyISAM;
+</programlisting>
+</para>
+<para>
+Para la administracion del mismo existe un IDM, IDM_links.
+Dentro de mapping.txt tiene que ir esto.
+<programlisting>
+a_links:IDM_links(insert)
+m_links:IDM_links(modify)
+</programlisting>
+Para incluir el IDM en un .bif tiene que ir
+<programlisting>
+&lt;BifContainer WidgetAccess=&quot;username = admin&quot;&gt;
+&lt;BifInclude SRC=&quot;component://a_links&quot; /&gt;
+&lt;BifInclude SRC=&quot;component://m_links&quot; /&gt;
+&lt;/BifContainer&gt;
+</programlisting>
+Como se ve, hay un parametro o atributo extra en el tag BifContainer, que es
+WidgetAcces, el cual indica que solo en usuario admin puede ver lo que hay dentro
+de BifContainer, o sea el IDM_links.
+Otra posibilidad en vez de usar username, es tambien el parametro keys, o level.
+</para>
+<para>Comentarios, preguntas
+<ulink url="mailto:linuxvarela@yahoo.com.ar">email</ulink>(linuxvarela_at_yahoo.com.ar).
+</para>
+</article>

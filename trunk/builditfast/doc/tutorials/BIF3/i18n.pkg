@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?><!-- -*- xml -*- -->
+
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN"
+       "/usr/share/sgml/docbook/xml-dtd-4.2/docbookx.dtd">
+
+  <article>
+
+<!--  <articleinfo>
+    <author>
+      <firstname>Nicolás</firstname>
+      <surname>César</surname>
+    </author>
+    <date>April 2004</date>
+  </articleinfo>
+-->
+  <title>I18n under BIF</title>
+
+<section>
+<title>What is I18n?</title>
+
+<para>
+I18n is short for internacionalization. Means several
+languages in one application.
+</para>
+
+<para>
+Widgets have a special attribute LANG so you can define 
+in which language are the made.
+</para>
+
+<para>
+Lets see a simple example:
+<programlisting>
+&lt;titlebox lang="en" title="What is BIF?"&gt;
+Build it Fast (BIF) is a PHP Framework.  It contains several classes
+that help you develop complex Web applications in a short amount of
+time. It brings the concept of the 'widget' to Web development. It
+features Cascade Skins and transparent session management.
+&lt;/titlebox&gt;
+&lt;titlebox lang="es" title="¿Qué es BIF?"&gt;
+Build it Fast (BIF) es un marco de trabajo (framework) escrito en PHP.
+Contien varias clases que te ayudan a desarrollar aplicaciones web
+complejas en un período de tiempo corto. Utiliza el concepto de 
+'widget' en el desarrollo web. Hace uso de Pieles y manejo de
+&lt;/titlebox&gt;
+</programlisting>
+</para>
+
+<para>
+As you can see lang="en" and lang="es" defines  the language titlebox
+contents are in.
+</para>
+</section>
+
+<section>
+<title>Configuring your application</title>
+<para>
+In order to configure your application with this behaviour, you should
+include in your  bifConfig.inc.php:
+<programlisting>
+$bifcfg['i18n']['supported'] = array('English' => 'en',
+                                     'Español' => 'es',
+                                     );
+$bifcfg['i18n']['default']   = 'en';
+</programlisting>
+</para>
+
+<para>
+If you access that page with ?bif_lang=en or ?bif_lang=es you'll see
+diferent content. Showing one or other paragraph.
+You can include a language selector use 'BifLangSelector' widget.
+</para>
+</section>
+
+<section>
+<title>In different files</title>
+<para>
+If you need to split languages in diferent files -that's for example 
+English and Spanish in two different files- you could use BifInclude
+in  this way:
+
+<programlisting>
+&lt;BifInclude src="Content/index_en.bif" lang="en" /&gt;
+&lt;BifInclude src="Content/index_es.bif" lang="es" /&gt;
+</programlisting>
+
+Note the directory is relative to $app_dir! and the language specific
+content will be in separated files.
+</para>
+</section>
+</article>

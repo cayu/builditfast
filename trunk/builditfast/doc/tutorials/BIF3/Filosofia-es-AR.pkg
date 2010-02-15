@@ -1,0 +1,48 @@
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+  <article>
+    <title>Introducción</title>
+    <section>
+
+      <title>¿Qu&eacute; es <application>BIF</application>?</title>
+
+      <para><application>BIF</application> es un conjunto de
+      herramientas para hacer aplicaciones web de forma simple y
+      rápida, escrito en <application>PHP</application>.
+      </para>
+
+      <para>Separa la actividad en 3 roles:
+        <itemizedlist>
+          <listitem>
+            <para>Cargador de contenido</para>
+          </listitem>
+          <listitem>
+            <para>Diseñador Gr&aacute;fico</para>
+          </listitem>
+          <listitem>
+            <para>Programador BIF</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+
+    <section>
+
+      <title>¿Qu&eacute; <emphasis>NO</emphasis> es
+      <application>BIF</application>?</title>
+
+      <para>No es ideal usar BIF siendo una s&oacute;la persona que se
+      encarga de todos los roles. BIF está pensado para hacer
+      aplicaciones medianas a grandes.
+      </para>
+    </section>
+
+    <section>
+
+      <title>¿En que me beneficia <application>BIF</application>?</title>
+
+      <para>Al separar los roles, evita la colisión de tareas, a su vez <application>BIF</application> esta programado en lo que se denomina Programacion Orientada a Objetos, lo cual hace que el codigo que creemos sea mas facil de reutiliza, a su vez mas ordenado y a tambien agilisar el tiempo de programación.
+      </para>
+    </section>
+
+
+  </article>

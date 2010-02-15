@@ -1,0 +1,121 @@
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+  <article>
+    <title>Changing the look</title>
+
+
+<para>
+So, form time to time, we cut our hair, we change clothes, we get
+uglier, etc. We change our look, just like a BIF application.! All BIF
+applications implement <emphasis>skins</emphasis>.
+</para>
+
+<para>
+For the anxious, let's go straight to the point. In your application
+directory, change skins.txt
+<programlisting>
+#  file 'skins.txt': User configuration file
+#  ----------------------------------------------
+#  
+#  This file has skins configuration.
+#  They are listed in order to be included.
+#  must exist either
+#      "$sys_dir/Skins/$skin.php" 
+#  or
+#      "$app_dir/Skins/$skin.php" 
+SkinDefault
+SkinAeolus
+</programlisting>
+</para>
+
+    <para>Now, our aplication should look diferent.</para>
+
+    <warning><para>It's a very common mistake to delete 'SkinDefault'
+    line, and will give an error like "Can't file template
+    file", it's necesary to have both lines.</para></warning>
+
+    <para>We could use several skins at once, even this is not so
+    common in most skinable applications, is very common in humans
+    with their clothes.</para>
+
+    <para>Humans when they wear clothes have a special order to put
+    them on, the final look will be based in that order. Why your
+    underwear isn't visible? because you put your pants AFTER your
+    underwear. Your coat won't let your shirt visible.  </para>
+
+    <para>For this example, our skins.txt will be:
+<programlisting>
+#  file 'skins.txt': User configuration file
+#  ----------------------------------------------
+#  
+#  This file has skins configuration.
+#  They are listed in order to be included.
+#  must exist either
+#      "$sys_dir/Skins/$skin.php" 
+#  or
+#      "$app_dir/Skins/$skin.php" 
+SkinUnderwear
+SkinPants
+SkinTShirt
+SkinCoat
+</programlisting>
+</para>
+
+    <para>Your SkinPants won't cover ALL the application, just the
+    lower part, for example. Suppose you have a LowerPart Widget. If
+    you wan't to change the look of that widget: create a file named
+    lowerpart.tpl and place it in the right directory.
+    </para>
+
+    <para>The natural next question is: Which is the 'right
+    directory'? the skin directory!: for SkinPants will be
+    Skins/Pants/ either in your application or system directory (make
+    sure Skins/SkinPants.php exists!)</para>
+
+    <para>if  Skins/Pants/lowerpart.tpl and
+    Skins/Underwear/lowerpart.tpl exist, will be used for drawing
+    LowerPart widget. Remember we talk about the order.</para>
+
+    <para>But UpperPart widget isn't covered by neither SkinUnderwear
+    or SkinPants. That's why we need SkinTShirt also.</para>
+
+    <para>Back to a more realistic scenario, all BIF3 widgets
+    representation are in SkinDefault skin. That's if we were using
+    TitleBox widget, we need that skin. Usally, we have also a
+    SkinMyApplication skin for application-specific widgets. And also if
+    a costumer asks for special esthetic changes, we could have a
+    SkinSpecialCostumer with VERY few widget's template. Without changing the
+    SkinMyApplication for all other costumers.</para>
+
+<para>Just to get things a little more clear, skins.txt will look
+like -order is important-:
+<programlisting>
+#  file 'skins.txt': User configuration file
+#  ----------------------------------------------
+#  
+#  This file has skins configuration.
+#  They are listed in order to be included.
+#  must exist either
+#      "$sys_dir/Skins/$skin.php" 
+#  or
+#      "$app_dir/Skins/$skin.php" 
+SkinDefault
+SkinMyApplication
+SkinSpecialCostumer
+</programlisting>
+</para>
+
+<section>
+<title>Conclusion: </title> 
+
+<para>
+Stack-able skins let us have multiple looks from the same
+application without changing the hole skin: just the widgets we're
+interested. This minimize maintenance, making programmers happier
+because is less work!
+
+Besides, in a large project, we could start using a simple skin for
+prototyping and, after, the graphical designer completes all widgets.
+</para>
+</section>
+
+</article>

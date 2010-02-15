@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="ISO-8859-1"?> <!-- -*- xml -*- -->
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.1.2//EN" "/usr/share/sgml/docbook/xml-dtd-4.2/docbookx.dtd">
+
+  <article>
+    <title>Instalación de BIF (Spanish)</title>
+<para>
+Como instalar BiF, dar los primeros pasos.
+</para>
+<para>
+Descargar BiF de la Web <ulink url="http://bif.lunix.com.ar">http://bif.lunix.com.ar</ulink>
+Leer el archivo INSTALL.
+</para>
+<para>
+Para la instalacion de BiF hay diferentes metodos: la instalacion manual, 
+generica por makefile, o por medio de paquetes. Los cuales hay disponibles en
+formato RPM(Mandrake), DEB(Debian), TGZ(Slackware), Euild(Gentoo).
+</para>
+<para>
+BiF3 posee dos formas diferentes de instalar, esas pueden ser, que la instalacion
+de bif3 solo sea necesario para un sitio o aplicacion, y  otra manera es que sea
+una instalacion accesible a multiples aplicaciones en el servidor.
+El directorio donde se instala bif3 se llama $sys_dir y el directorio de ejecucion
+de la aplicacion se llama $app_dir.
+</para>
+<para>
+Para proceder a la instalacion del mismo
+Metodo manual
+<programlisting>
+tar xvfzp bif3-[version].tgz
+cp -a bif3-[version] dir/de/instalacion
+</programlisting>
+Metodo generico, el cual se realiza por medio de la ejecucion del comando make,
+por defecto se instala en /usr/share/bif3-CVS, haciendo un link a /usr/share/bif3.
+<programlisting>
+tar xvfzp bif3-[version].tgz
+cd bif3-[version]
+make install
+</programlisting>
+Paquetes .deb, el mismo se instala en /usr/share/bif3, con soporte de libmenu para
+la documentacion la cual se situa en /usr/share/doc/bif3, por ahora el soporte 
+doc-base se quito ya que no era necesario, las paginas man en /usr/share/man/es/man3.
+Este paquete tiene su depencia en el paquete php4, el cual a su vez depende de apache.
+<programlisting>
+dpkg -i bif3-[version]-all.deb
+</programlisting>
+Paquetes .tgz, son para Slackware y se instalan con las utilidades de manejo de paquetes
+TGZ las cuales con installpkg, removepkg etc. Se instala en /usr/share/bif3.
+Las paginas man en /usr/share/man/es/man3, y la documentacion en /usr/share/doc/bif3
+<programlisting>
+installpkg bif3-[version]-noarch-1.tgz
+</programlisting>
+Paquetes .rpm, este paquete depende a su vez del paquete apache. y se instala
+en /usr/share/bif3.
+<programlisting>
+rpm -i bif3-[version]-noarch-1mdk.rpm
+</programlisting>
+Relizando esta instalacion  por paquetes o generica se obtiene un bif3 funcional
+para multiples sitios.
+</para>
+<para>
+Para poder comprobar como funciona BiF, es coneniente bajar el paquete bif3-site,
+el cual es una peque&ntilde;a aplicacion de ejemplo. En la misma se puede encontrar
+el archivo de configuracion de bif3 bifConfig.inc.php.
+En bifConfig.inc se encuentran diferentes parametro de configuracion como:
+El directorio de instalacion de bif3 ($sys_dir), que por defecto es /usr/share/bif3.
+La conexion con la base de datos, la tabla SQL de autenticacion.
+Y demas opciones del sistema.
+</para>
+<para>
+Ademas de bifConfig.inc.php nos encontramos con otros dos archivos que contienen la 
+configuracion de Skins, y componentes.
+Las Skins se configuran por medio de una lista de prioridad de busqueda, de abajo
+hacia arriba, asi que si falta el template de tal o cual widget primero lo busca en
+la Skin que esta abajo de todo y sube buscando hasta encontralo.
+<programlisting>
+# ***********************************************************
+#  file 'skins.txt': Archivo de configuracion de usuario
+#  -----------------------------------------------------
+#  
+#  Este archivo contiene la configuracion de los skins.
+#  Estas estan listadas en el orden a ser incluidas.
+#  las mismas deben existir en
+#      "$sys_dir/Skins/$skin.php" 
+#  o
+#      "$app_dir/Skins/$skin.php" 
+# 
+# ***********************************************************
+#  comentarios? join bif-devel@listas.lunix.com.ar
+# ***********************************************************
+Default
+#Alvear
+#Aqua
+#Avina
+#Classic
+#Eos
+#FSM
+#Gleducar
+#Helius
+#HeliusGray
+#Ihuro
+#LinuxV
+#LinuxVa
+#Lunix
+</programlisting>
+Nota : esta es la lista de Skins disponibles a la version 0.3.7 de bif3.
+Como se ve aca se deja la Skin Default al final, ya que esta contiene los templates
+por defecto para todos los widgets. De esta manera si no encuentra algun template
+dentro de las otras Skins, entonces usara la por defecto que se encuentra dentro de
+la Skin Default.
+</para>
+<para>
+Tambien nos encontramos con el archivo mapping.txt, con el cual se configuran los 
+componentes. Para eso hay que poner un nombre de refenrencia para tal componente,
+con tal parametro.
+<programlisting>
+# mapping.txt  - maps logical names to components and thier parameters
+#
+# format:
+# logical_id:Component[:Observer.Stub[,Observer.Stub...]]
+a_auth:IDM_auth(insert)
+m_auth:IDM_auth(modify)
+a_news:IDM_News(insert)
+m_news:IDM_News(modify)
+a_links:IDM_links(insert)
+m_links:IDM_links(modify)
+u_file:FileUpload(incoming)
+u_img:ImageUpload(uploaded-images)
+wiki:SimpleWiki(wiki/;IndexPage;600)
+</programlisting>
+Por ejemplo con el a_links:IDM_links(insert), se hace referencia al componente
+IDM_links con la opcion insertar, con el alias a_links.
+Para la inclusion del mismo en un .bif seria de la siguiente manera.
+<programlisting>
+&lt;BifInclude SRC="component://a_links"/&gt;
+</programlisting>
+En el archivo mapping.txt que se visualiza aqui, se pueden ver los componentes mas
+comunes de BiF.
+</para>
+<para>
+<screen>
+IDM
+Clase principal de los componentes IDM_*, Insert Delete Modify. Sirve para administrar
+registros, con opciones de borrar, modificar, o insertar datos.
+IDM_auth
+Componente de manejo de autenticacion(ver tutorial de autenticacion).
+IDM_News
+Manejo de noticias
+IDM_links
+Manejo de tabla de links
+FileUpload
+Subida de Archivos, lleva un parametro adicional que indica el directorio de subida
+de los archivos.
+ImageUpload
+Subida de archivos de Imagen, lleva un parametro adicional que indica el directorio de subida
+de los archivos.
+SimpleWiki
+Componente para el manejo de un Wiki (ver tutorial UsingSimpleWiki).
+</screen>
+</para>
+<para>Comentarios, preguntas
+<ulink url="mailto:linuxvarela@yahoo.com.ar">Sergio</ulink>(linuxvarela_at_yahoo.com.ar).
+</para>
+</article>

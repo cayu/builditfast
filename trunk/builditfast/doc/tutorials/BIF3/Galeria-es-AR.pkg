@@ -1,0 +1,33 @@
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook V4.1//EN">
+  <article>
+    <title>Galeria de fotos</title>
+<para>
+Cuando se presenta la necesidad de crear una galeria de fotos a modo album,
+se soluciona con el widget MyAlbum, con el mismo se puede establecer una galeria
+de imagenes con miniaturas de las mismas y dividido en columnas
+</para>
+<para>
+Los parametro de este widget son
+COLS columnas a emplear
+CANT cantidad de fotos a mostrar por pagina
+NUM numero de pagina a mostrar
+
+Ejemplo de un.bif
+<programlisting>
+&lt;MyAlbum COLS=&quot;1&quot; CANT=&quot;4&quot; NUM=&quot;{NUM}&quot; /&gt;
+</programlisting>
+Dentro de un .php
+<programlisting>
+$num = $_SESSION['_BifApplication']->getParameter('num');
+$root =&amp;render_file('Contenido/album.bif',array('NUM' => $num));
+</programlisting>
+</para>
+<para>
+Importante: para el correcto funcionamiento del mismo hay que tener en nuestro
+raiz de la aplicacion / , el archivo que actua de helper para la generacion
+de miniaturas thumbnail.php que se encuentra en el directorio doc/examples.
+</para>
+<para>Comentarios, preguntas
+<ulink url="mailto:linuxvarela@yahoo.com.ar">Sergio</ulink>(linuxvarela_at_yahoo.com.ar).
+</para>
+</article>
