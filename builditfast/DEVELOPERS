@@ -1,0 +1,13 @@
+for developing be sure to:
+- have the latest PEAR
+- use register_globals = off
+- use magic_quotes_gpc =off
+NO!- allow_call_time_pass_reference  = off (don't do this)
+
+
+Dardo Guidobono
+
+DEVEL-POLICIES : 
+
+1 - when you need a patch and is very intrusive don't erase lines, as a first approach you,just comment them.
+2 - discuss the patch in the list and if is necessary do an election .. do it

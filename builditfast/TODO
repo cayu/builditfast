@@ -1,0 +1,14 @@
+TODO:
+
+- Create 1 to N (signal & slots) mechanism
+- the application must links the hooks and the stubs of the loaded components.
+- Audit all the code looking for widgets that ignore changes of attributes before draw()
+
+
+DONE:
+
+- add a gtk-like getWidget function
+- added skin functionality to Application
+- created class Application (sigleton) - Dardo Guidobono
+- define directory tree - Dardo Guidobono
+- migrate xml parser render2.php to Base/render.php

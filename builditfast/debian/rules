@@ -1,0 +1,27 @@
+#!/usr/bin/make -f
+# -*- mode: makefile; coding: utf-8 -*-
+#  # Copyright © 2003-2004 Frederik Schüler <fschueler@gmx.net>
+
+export DH_VERBOSE="1"
+include /usr/share/cdbs/1/rules/debhelper.mk
+
+DEB_INSTALL_MANPAGES_bif3 := debian/bif3.1
+
+common-install-indep::
+	mkdir -p debian/bif3/usr/share/bif3
+	cp -a Base debian/bif3/usr/share/bif3/
+	cp -a Components debian/bif3/usr/share/bif3/
+	cp -a PEAR debian/bif3/usr/share/bif3/
+	cp -a Skins debian/bif3/usr/share/bif3/
+	cp -a sql debian/bif3/usr/share/bif3/
+	cp -a Widgets debian/bif3/usr/share/bif3/	
+	dh_installman debian/bif3.1
+
+
+	# Set directory permissions
+	chmod -R 755 `find debian/bif3/usr/share/bif3/ -type d`
+	# Set other files permissions
+	chmod -R 644 `find debian/bif3/usr/share/bif3/ -type f`
+	
+	chown root:root debian/bif3 -R
+	

@@ -1,0 +1,9 @@
+<titlebox title="Subir archivo">
+<br/>
+{MESSAGE}<br/>
+<form enctype="multipart/form-data" action="?action={ACTION}" method="post">
+<input type="hidden" name="MAX_FILE_SIZE" value="{FILELIMIT}" />
+Enviado: <input name="userfile" type="file" />
+<input type="submit" value="Enviar archivo" />
+</form>
+</titlebox>

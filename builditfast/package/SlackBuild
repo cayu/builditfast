@@ -1,0 +1,22 @@
+#!/bin/sh
+# Script Experimental de creacion de paquetes Slackware
+# Sergio Cayuqueo <linuxvarela@yahoo.com.ar>
+# Esto es experimental :-)
+VERSION=0.4.2
+
+mkdir -p tmp
+mkdir -p tmp/usr
+make install PREFIX=tmp/usr
+cd tmp
+mkdir -p install
+echo "
+bif3: Build it Fast (BIF) is a PHP Framework. It contains
+bif3: several classes that help you develop complex Web
+bif3: applications in a short amount of time. It brings
+bif3: the concept of the 'widget' to Web development.
+bif3: It features Cascade Skins and transparent session
+bif3: management.
+" > install/slack-desc ;
+echo "ln -s /usr/share/bif3-CVS /usr/share/bif3 "  > install/doinst.sh ;
+
+tar cvfzp bif3-$VERSION-noarch-1.tgz *

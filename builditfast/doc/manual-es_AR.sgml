@@ -1,0 +1,1484 @@
+<!DOCTYPE Book PUBLIC "-//OASIS//DTD DocBook V4.1//EN" [
+<!ENTITY version "0.1.16">
+]>
+<book lang="es">
+  <bookinfo>
+    <date>$id$</date>
+    <title><acronym>BIF</acronym> (Build It Fast)</title>
+    <subtitle>Manual de instalación y primeros pasos</subtitle>
+    <releaseinfo>Documentación en desarrollo</releaseinfo>
+    <authorgroup>
+      <author>
+        <firstname>Nicolás</firstname>
+        <surname>César</surname>
+      </author>
+      <author>
+        <firstname>Lucas</firstname>
+        <surname>Di Pentima</surname>
+      </author>
+      <author>
+        <firstname>Sergio</firstname>
+        <surname>Cayuqueo</surname>
+      </author>
+    </authorgroup>
+    <address>http://www.lunix.com.ar/Bif.php</address>
+    <legalnotice>
+      <para>
+        Copyright 2002 Nicolás César, Lucas Di Pentima.
+
+        Permission is granted to copy, distribute and/or modify this
+        document under the terms of the GNU Free Documentation
+        License, Version 1.1 or any later version published by the
+        Free Software Foundation; with no Invariant Sections, with no
+        Front-Cover Texts, and with no Back-Cover Texts.  A copy of
+        the license is included in the section entitled "GNU Free
+        Documentation License".
+      </para>
+    </legalnotice>
+    <revhistory>
+      <revision>
+        <revnumber>0.3</revnumber>
+        <date>27 Julio 2003</date>
+        <authorinitials>ndc</authorinitials>
+        <revremark>Expansion de BIF3</revremark>
+      </revision>
+      <revision>
+        <revnumber>0.2</revnumber>
+        <date>Junio 2003</date>
+        <authorinitials>ndc</authorinitials>
+        <revremark>Migración de BIF2 a BIF3</revremark>
+      </revision>
+      <revision>
+        <revnumber>0.1</revnumber>
+        <date>01 Agosto 2002</date>
+        <authorinitials>ldp</authorinitials>
+        <revremark>Migración a docbook de lo hecho en LaTeX</revremark>
+      </revision>
+    </revhistory>
+  </bookinfo>
+  <!-- ///////////////////////////////////////////////////// -->
+  <chapter>
+    <title>Introducción</title>
+    <section>
+
+      <title>¿Qu&eacute; es <application>BIF</application>?</title>
+
+      <para><application>BIF</application> es un conjunto de
+      herramientas para hacer aplicaciones web de forma simple y
+      rápida, escrito en <application>PHP</application>.
+      </para>
+
+      <para>Separa la actividad en 3 roles:
+        <itemizedlist>
+          <listitem>
+            <para>Cargador de contenido</para>
+          </listitem>
+          <listitem>
+            <para>Diseñador Gr&aacute;fico</para>
+          </listitem>
+          <listitem>
+            <para>Programador BIF</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+    </section>
+
+    <section>
+
+      <title>¿Qu&eacute; <emphasis>NO</emphasis> es
+      <application>BIF</application>?</title>
+
+      <para>No es ideal usar BIF siendo una s&oacute;la persona que se
+      encarga de todos los roles. BIF está pensado para hacer
+      aplicaciones medianas a grandes
+      </para>
+    </section>
+
+    <section>
+      <title>Requerimientos</title>
+      <para><application>BIF</application> requiere
+      <application>PHP</application> como módulo de
+      <application>Apache</application>. Las distribuciones suelen
+      incluir un paquete llamado mod_php o similar.  de más está decir
+      que <application>Apache</application> será necesario.
+      </para>
+      <para>
+      Con respecto a la conexi&oacute;n de la Base de Datos: el m&oacute;dulo DB de
+      <application>PEAR</application> es parte de la distribuci&oacute;n de
+      <application>BIF</application> a partir de la version 0.1.16.
+      MySQL fue ampliamente probado, pero de seguro el resto de las
+      bases de datos no tendría mayores inconvenientes.
+      </para>
+      <para>En teor&iacute;a, cualquier Base de datos soportada por el m&oacute;dulo
+      DB será soportado por <application>BIF</application>, s&oacute;lo debe
+      ser incorporada al directorio <filename>PEAR</filename>  y
+      realizar unas modificaciones m&iacute;nimas.
+      </para>
+      <para> En Mandrake 9.1, hay que instalar:
+       php-pear y va a pedir una opcion de instalacion; eligiendo
+       'apache2-mod_php'
+       se instalan los siguientes paquetes
+       apache-conf-2.0.44-11mdk.i586
+       apache2-2.0.44-11mdk.i586
+       apache2-common-2.0.44-11mdk.i586
+       apache2-mod_php-2.0.44_4.3.1-2mdk.i586
+       apache2-modules-2.0.44-11mdk.i586
+       libapr0-2.0.44-11mdk.i586
+       libdb4.0-4.0.14-6mdk.i586
+       libphp_common430-430-11mdk.i586
+       libtool-1.4.3-1mdk.i586
+       libxmlrpc0-0.51-4mdk.i586
+       lynx-2.8.5-0.13mdk.dev.12.i586
+       php-pear-4.3.0-3mdk.noarch
+       php-xml-4.3.0-2mdk.i586
+       php-xmlrpc-4.3.0-2mdk.i586
+     </para>
+     <para>
+       En el caso de usar una base de datos MySQL
+       hay que instalar el paquete php-mysql
+       que instalará 
+       libmysql12-4.0.11a-5mdk.i586
+       php-mysql-4.3.0-2mdk.i586
+</para>
+
+    </section>
+    <section>
+      <title>Instalación desde archivos
+<filename>.tar.gz</filename></title>
+
+      <para>La dirección de Downloads del proyecto es
+      <ulink url="http://www.lunix.com.ar/Bif.php?action=bif.Seleccion&amp;s=download.bif">Downloads</ulink>.
+      Allí estarán los <filename>.tar.gz</filename> e instrucciones de
+      como bajar con CVS.
+</para>
+    </section>
+    <section>
+      <title>Instalación desde archivos
+<filename>.tgz(Slackware)</filename></title>
+
+      <para>La dirección de Downloads del proyecto es
+      <ulink url="http://www.lunix.com.ar/Bif.php?action=bif.Seleccion&amp;s=download.bif">Downloads</ulink>.
+      Allí estarán los <filename>.tgz</filename>, y se instalan con  el
+      comando installpkg disponible en slackware.
+</para>
+    </section>
+    <section>
+      <title>Instalación desde archivos
+<filename>.deb</filename></title>
+    <para>
+    Para instalar desde paquetes <acronym>Debian</acronym> debemos utilizar
+    el comando <application>dpkg</application>. Adicionando el parametro 
+    "-i bif3-version.deb", si ya teniamos una version anterior instalada, este 
+    la actualiza automaticamente.
+    Por defecto el "$sys_dir" de <application>BIF3</application> se instala
+    en <filename>/usr/share/BIF3</filename>, e instala la documentacion en
+    <filename>/usr/share/doc/bif3</filename>.
+    Actualmente hay disponibles los paquetes <acronym>Debian</acronym>
+    para <application>BIF3</application> <application>BIF3-site</application>,
+    la version disponible en formato a <acronym>Debian</acronym> la hora de escribir
+    estas lineas era la "0.2.2".
+    <screen>
+    Los paquetes necesarios a instalar para el correcto funcionamiento son:
+    <filename>bif3</filename> : Core de bif3
+    <filename>bif3-skin</filename> : Skin para bif3, con soporte de apacheconfig para 
+    Alias /Skins /usr/share/bif3/Skins para la visualizacion correcta de las
+    imagenes en el servidor web.
+    Los paquetes extra pueden ser 
+    <filename>bif3-doc</filename> : Documentacion de bif3 con soporte libmenu, doc-base, y dwww
+    <filename>bif3-site</filename>: Sitio de ejemplo del uso de bif3
+    </screen>
+    Repositorio debian
+    <address>deb http://ihuronet.com.ar/ftp/debian/ ./</address>
+    </para>
+    </section>
+    <section>
+      <title>Instalación para un sitio (y programadores
+      ansiosos)</title>
+
+      <para>Este será una receta rápida para quienes quieren probar
+      <application>BIF</application> por primera vez, en caso de hacer
+      varios sitios con <application>BIF</application> conviene usar
+      la metodología de <xref linkend="seccionMultipleSitio" /.
+      </para>
+      <para>Instrucciones paso a paso</para>
+      <itemizedlist>
+        <listitem>
+          <para>Bajar los paquetes para una version de BIF (por ejemplo
+&version;)</para>
+        </listitem>
+        <listitem>
+          <para>Descomprimirlos en el mismo directorio (por ejemplo
+           <filename class="directory">/var/www/html/pruebaBIF</filename>).
+          </para>
+        </listitem>
+        <listitem>
+          <para>Copiar <filename>bifConfig.inc.example</filename> a
+          <filename>bifConfig.inc</filename></para>
+        </listitem>
+      </itemizedlist>
+    </section>
+    <section id="seccionMultipleSitio">
+      <title>Instalación para múltiples sitios</title>
+      <para><application>BIF</application> se divide en dos paquetes,
+        para instalación a nivel sistema:
+<filename>BIF3-version.tgz</filename>
+        y para la instalación a nivel sitio:
+        <filename>BIF3-site-version.tgz</filename></para>
+
+      <para>Supongamos que usamos el directorio <filename
+        class="directory">/usr/local/BIF</filename> para la
+        instalación de <application>BIF</application> a nivel
+        sistema. Entonces hay que descomprimir el paquete
+        <filename>BIF3-version.tgz</filename> de la siguiente manera:
+
+      <screen>
+        <prompt>maquina:~# </prompt><userinput>cd /usr/local</userinput>
+        <prompt>maquina:/usr/local# </prompt><userinput>tar xvzf
+BIF3-version.tgz</userinput>
+      </screen>
+
+        Si no funciona es probable que el archivo no se encuentre en
+        el directorio. Hay que moverlo a <filename
+        class="directory">/usr/local/BIF</filename>.
+      </para>
+
+      <para>Según el nivel de seguridad de la instalacion del PHP
+        (depende la distribucion que usemos) tendremos que editar el
+         archivo de configuración del PHP<footnote>
+          <para>Buscar el archivo <filename>php.ini</filename> bajo el
+          directorio <filename class="directory">/etc</filename>.
+          </para></footnote>. Hay que
+          agregar <filename>/usr/local/BIF</filename> al
+          «include_path»:
+
+        <screen>
+          (...)
+          ;;;;;;;;;;;;;;;;;;;;;;;;;
+          ; Paths and Directories ;
+          ;;;;;;;;;;;;;;;;;;;;;;;;;
+          include_path    =    "/usr/lib/php:/usr/share/bif3"
+          (...)
+        </screen>
+        Listo, esto debería dejar instalado a nivel sistema, ahora
+        vamos a hacer un sitio en el directorio <filename
+        class="directory">/home/usuario/public_html</filename>:
+
+        <screen>
+          <prompt>maquina:~$ </prompt><userinput>cd
+/home/usuario/public_html</userinput>
+          <prompt>maquina:/home/usuario/public_html$ </prompt><userinput>tar
+xvfzp BIF-site-version.tgz</userinput>
+        </screen>
+
+        Recuerden que el directorio debe estar creado y contener a
+        <filename>BIF-site-version.tgz</filename>.
+      </para>
+
+      <para>Para comprobar si funciona, arrancamos el
+      <application>apache</application> si es que no está andando:
+
+        <screen>
+          <prompt>maquina:~# </prompt><userinput>/etc/init.d/httpd
+start</userinput>
+        </screen>
+
+        En Debian y otras distribuciones:
+
+        <screen>
+          <prompt>maquina:~# </prompt><userinput>/etc/init.d/apache
+start</userinput>
+        </screen>
+
+        En el caso de que apache ya estubiera corriendo igualmente hay
+        que reiniciarlo, para que <acronym>PHP</acronym> tome la nueva
+        directiva «include_path».
+
+        Y si tiene configurado <filename
+        class="directory">public_html</filename> como opción, abrimos
+        un navegador en la dirección <ulink
+
+url="http://localhost/~usuario/test.first.php">http://localhost/~usuari
+o/index.php</ulink>
+        y debería decir "Funciona!"
+      </para>
+    </section>
+  </chapter>
+  <!-- ///////////////////////////////////////////////////// -->
+  <chapter>
+    <title>Cómo pensar con BIF</title>
+    <section>
+      <title>Historia</title>
+      <para>
+        <acronym>BIF</acronym> fue creado por Lunix como una necesidad para
+        la creación de un sistema basado en web que debía realizarse
+        en un plazo corto.
+      </para>
+      <para>
+        Lucas Di Pentima y Nicolás César ya tenían experiencia usando
+        los conocidos «templates» bajo <acronym>PHP</acronym> y
+        concluyeron que era una herramienta muy útil, pero que en el
+        desarrollo de sitios grandes era inevitable duplicar código
+        <acronym>PHP</acronym> y templates. Como el desarrollo era
+        parte de un aprendizaje, se podían programar -copiar y pegar
+        en realidad- 5 rutinas iguales hasta que nos dábamos cuenta de
+        un BUG, que se tenía que corregir en todos los lugares donde
+        aparecían esas rutinas<footnote>
+          <para>En un sitio de 80 páginas web es muy común encontrar
+        mas de 80 «foreach» que luego de la ejecución de una sentencia
+        SQL completaban el correspondiente template.</para></footnote>.
+      </para>
+      <para>
+        La única salida a este problema era la centralización de
+        dichas sentencias. Aquí planteamos varias alternativas y la
+        que sobresalió por su simpleza es la orientación a objetos de
+        los componentes de una página.
+      </para>
+      <para>
+        La idea original era tener un archivo que en 10 líneas exprese todo lo
+        que una página contiene. Algo como esto:
+
+        <screen>
+          Encabezado
+          TituloProductos
+          ProdNro23
+          Texto:
+
+                  El producto Número 23 es una excelente opción para
+                  el cultivo de soja. En nuestra empresa.... blah
+                  bla..
+          FinTexto
+          PiedePagina
+        </screen>
+        Luego <acronym>BIF</acronym> automágicamente interpretaría
+        todo y devolvería la página <acronym>HTML</acronym>
+        deseada. Por ejemplo «Encabezado» pone el membrete de la
+        companía y una tabla que encuadraba todo. el encabezado son
+        aproximadamente 17 líneas de <acronym>HTML</acronym>. Y son
+        las mismas 17 líneas para todas las páginas.
+      </para>
+      <para>
+        Así surgió la idea de «Build It Fast v1.0».
+      </para>
+      <para>
+        A esas palabras claves las denominamos «widgets»; como lo hace
+        la mayoría de los frameworks de interfaces de usuario
+        orientados a objetos.
+      </para>
+      <para>
+        Y comenzamos a trabajar, pero nos dimos cuenta de que la idea
+        era mucho más brillante de lo que pensábamos: dividía el
+        trabajo por completo en tres roles claves.
+
+        <itemizedlist>
+          <listitem>
+            <para>El encargado de los contenidos.</para>
+          </listitem>
+          <listitem>
+            <para>El encargado de los widgets.</para>
+          </listitem>
+          <listitem>
+            <para>El encargado de las consultas SQL.</para>
+          </listitem>
+        </itemizedlist>
+      </para>
+      <para>
+        Supongamos un escenario ficticio<footnote><para>Los
+          personajes también son ficticios, cualquier coincidencia con
+          la realidad es producto de tu imaginación</para></footnote>:
+
+        Lucas está como encargado de contenidos, entonces empieza a
+        escribir:
+
+        <screen>
+          Encabezado
+          TituloProductos
+          (..)
+        </screen>
+        Mientras tanto no existe ni el «Encabezado» ni el
+        «TituloProductos».
+      </para>
+      <para>
+        Nicolás, encargado de los widgets, a los apurones hace un
+        «Encabezado» y un «TituloProductos» que obviamente no serán
+        los definitivos, permitiendo a Lucas continuar probando su
+        trabajo (los contenidos que vaya insertando). Ahora Nicolás,
+        tranquilo, puede hacer un diseño gráfico sobre esos items.
+      </para>
+      <para>
+        En un esquema tradicional de trabajo, se espera que el
+        diseñador gráfico concluya todo el diseño del sitio para
+        empezar a llenarlo de contenido; con <acronym>BIF</acronym> no
+        es necesario.
+      </para>
+      <para>
+        En un momento determinado Lucas quiere incluir una encuesta en
+        las páginas y pone una «votación del día»:
+
+        <screen>
+          (..)
+          VotacionDelDia
+          (..)
+        </screen>
+
+        que está vinculada a preguntas en una base de datos
+        MySQL. Entonces le dice a Cristian, encargado de SQL, que haga
+        el SQL correspondiente, que luego se incorporará al widget
+        «VotacionDelDia», sin interrumpir el trabajo de cada
+        uno. Lindo, ¿no?.
+      </para>
+    </section>
+    <section>
+      <title>Introducción</title>
+      <para>
+        Seguramente para esta altura, ya tenés instalado
+        <acronym>BIF</acronym> en tu sistema, estuviste explorando los
+        archivos y no entendés para que sirven. Acá una breve reseña
+        que sirve tanto para el paquete «BIF»:
+      </para>
+      <para>
+        Los archivos <filename>.php</filename> que se pueden encontrar
+        en las aplicaciones<footnote> <para>Digamos el paquete
+        <filename>BIF-site</filename></para> </footnote> dividen en:
+
+        <variablelist>
+          <varlistentry>
+            <term>Widgets</term>
+            <listitem>
+              <para>Representan un enfoque funcional relativo a la
+              aplicación. Inicialmente está vacío y se pueden utilizar
+              los widgets del paquete de sistema
+              <acronym>BIF</acronym>. Normalmente en el directorio
+              <filename class="directory">widgets</filename>.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Skins</term>
+            <listitem>
+              <para><acronym>BIF</acronym> tiene soporte de skins o
+              pieles. Por cada widget se definen archivos templates,
+              css y similares que dan aspecto de skins. Normalmente se
+                ubican bajo el directorio <filename
+              class="directory">skins</filename>. Para saber como
+              crear un skin ver el capítulo ?? en la página ??</para>
+              <!-- FIXME: necesito saber como se hacen referencias a
+              capítulos y páginas. En este caso se hare referencia al
+              label "skin" -->
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Configuración</term>
+            <listitem>
+              <para>los archivos
+              <filename>bifConfig.inc</filename>,
+                <filename>mapping.txt</filename>,
+                <filename>skins.txt</filename>.</para>
+            </listitem>
+          </varlistentry>
+          <varlistentry>
+            <term>Componentes</term>
+            <listitem>
+              <para> A partir de BIF3  surge un nuevo concepto llamado
+        Componente. Son aquellos fragmentos del sistema que necesitan
+       persistencia de estado entre páginas y su representación cambia
+       a medida que se utilizan. Se basan la sesion y utilizan widgets 
+       para su represntacion
+              </para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </para>
+    </section>
+  </chapter>
+  <chapter>
+    <title>Creando mi sitio</title>
+    <section>
+    <title>Configuracion de mi sitio</title>
+    <para>Para crear un sitio en <acronym>BiF</acronym>, se recomienda
+primero bajar el
+    paquete <filename>BIF-site-version.tgz</filename> del sitio de BiF,
+y asi poder ver un
+    ejemplo de un sitio basados en <acronym>BiF</acronym> funcionando.
+A continuacion
+    se ve un ejemplo de un archivo <filename>bifconfig.inc</filename>
+con los valores por
+    default.
+    </para>
+    <screen>
+
+&lt;?php
+
+/************************************************************
+ * bifConfig.inc Archivo de configuracion de usuario
+ * -------------------------------------------------
+ * 
+ * Este archivo tiene parametros especificos del usuario. 
+ * Si no esta seguro deje los valores por defecto.
+ *
+ ************************************************************
+ * comments? join bif-devel@listas.lunix.com.ar
+ ************************************************************/
+
+// $sys_dir es el directorio donde encontar la instalacion de BiF3.
+// Ejemplos:
+//
+//$sys_dir=dirname(__FILE__);  // Directorio actual
+//$sys_dir='/home/usuario/BIF3';
+$sys_dir='/usr/share/bif3';
+
+// Session name should be unique for each application 
+$bifcfg['session_name']        = 'BIF3-site_example';
+
+// Configuracion de la base de datos
+
+$bifcfg['DB']['phptype']       = 'mysql';     // base de datos soportada por PEAR
+$bifcfg['DB']['host']          = 'localhost'; // Host de la base de datos
+$bifcfg['DB']['port']          = '';          // Puerto de la BD, dejar en blanco por defecto
+$bifcfg['DB']['socket']        = '';          // Path to the socket - leave blank for default socket
+$bifcfg['DB']['connect_type']  = 'tcp';       // How to connect to MySQL server ('tcp' or 'socket')
+$bifcfg['DB']['auth_type']     = 'config';    // Authentication method (config, http or cookie based)?
+$bifcfg['DB']['user']          = 'usuario';   // Usuario
+$bifcfg['DB']['password']      = 'password';  // Password
+$bifcfg['DB']['database']      = 'basededatos';  // Nombre de la BD
+
+/*
+* AUTHENTICATION!
+$bifcfg['Auth']['param'] = "mysql://user:password@localhost/table";
+$bifcfg['Auth']['table'] = "auth";
+
+*/
+
+// Where the application it's going to be executed.
+$app_dir=dirname(__FILE__);
+
+$bifcfg['Skin']['file']    = "$app_dir/skins.txt"; // Archivo de configuracion del Skin
+
+/************************************************************
+ *************       End of user setup        ***************
+ ************************************************************/
+
+// Where the application it's going to be executed.
+$app_dir=dirname(__FILE__);
+
+include_once("$sys_dir/Base/Bif.php");
+
+// execute component action (in case there is one, of course)
+$_SESSION['_BifApplication']->execAction();
+
+?&gt;
+
+    </screen>
+    <para>Luego de ver esto nos damos cuenta de que debemos configurar
+el
+    directorio en donde esta instalado el sistema
+<acronym>BiF</acronym>, el
+    acceso a bases de datos, opcionalmente pero no necesario el nombre
+de sesion,
+    el archivo que contiene la configuracion de los Skins que por defecto se 
+    encuentra en el directorio root del sitio, por ejemplo 
+    <filename>/var/www/misitio/skin.txt</filename>.</para>
+    <para>
+<screen>
+# ***********************************************************
+#  archivo 'skins.txt': Archivo de configuracion de ususario
+#  ---------------------------------------------------------
+#  En este archivo se configuran los Skins de la aplicacion
+#
+#  This file has skins configuration.
+#  They are listed in order to be included.
+#  must exist either
+#      "$sys_dir/Skins/$skin.php" 
+#  or
+#      "$app_dir/Skins/$skin.php" 
+# 
+# ***********************************************************
+#  comments? join bif-devel@listas.lunix.com.ar
+# ***********************************************************
+#Skins disponibles hasta la fecha
+SkinDefault
+#SkinLinuxVa
+#SkinLinuxV
+#SkinAqua
+#SkinGleducar
+#SkinFSM
+#SkinAvina
+#SkinLunix
+#SkinIhuro
+</screen>
+</para>
+<para>
+Como ven en este archivo se guarda la configuracion del Skin a utilizar
+en nuestro sitio <acronym>BiF</acronym>, el formato del archivo es muy simple,
+los que esta despues de los # es un comentario, y para indicar las Skin a usar
+se indica anteponiendo el texto Skin y el nombre de la Skin, por ejemplo si mi Skin
+se llama <acronym>LinuxVa</acronym>, entonces debere poner SkinLinuxVa. Ademas
+la skins son anidables, o sea que si me faltan templates por hacer para algun widget
+entonces BIF3 los buscara por orden de busqueda. O sea que en la Skin que ponga 
+primero BIF3 buscara los que hay en ella para completar lo que falta en la ultima.
+    </para>
+    </section>
+    <section>
+    <title>Creando mis archivos</title>
+    <para>Para comenzar a trabajar con <acronym>BiF</acronym>, podemos
+utilizarlo
+    como una libreria para nuestros archivos
+<application>PHP</application> y
+    ejecutar las funciones y clases desde nuestros archivos .php
+unicamente, ó
+    ordenarle a nuestros scripts que procesen archivos en
+<acronym>XML</acronym>,
+    lo cual simplifica aún mas la tarea, ya que solo debemos crear tags
+con sus debidos
+    parametros, los cuales seran representados por los templates de
+<acronym>BiF</acronym>,
+    que corresponderan al widget relacionado con el tag
+<acronym>XML</acronym>.
+    </para>
+    </section>
+    <section>
+    <title>Un ejemplo practico</title>
+    <para>
+    Primero para comenzar a definir una pagina, debemos incluir el
+archivo <filename>bifConfig.inc</filename>
+    en nuestro archivo en <application>PHP</application>, con lo cual
+nos dara la posibilidad de poder utilizar
+    <acronym>BiF</acronym> en nuestros scripts
+<application>PHP</application> un ejemplo practico
+    seria:
+    </para>
+    <screen>
+     &lt;?php
+     // Inclucion del archivo de configuracion de BiF
+     include_once ('bifConfig.inc');
+     // Archivo a procesar con BiF
+     $root = &amp;render_file('Contenido/index.bif');
+     // Mostrar el archivo procesado por pantalla
+     print $root->draw();
+     ?&gt;
+    </screen>
+<!-- FIXME: buscar reemplazo a 'quote'
+    <quote>
+     Ejemplo sacado del paquete <filename>BiF-site-0.1.20.tgz</filename>
+    </quote>
+-->
+    <para>
+    Como ven es muy simple, solo hay que incluir la ubicacion del
+    archivo a preocesar,
+    y luego <acronym>BiF</acronym> hace el trabajo. Al principio
+    incluir el archivo de
+    configuracion <filename>bifConfig.inc</filename>, luego
+    especificar la ubicacion del
+    archivo a procesar por medio de la funcion &amp;render_file(), 
+    al final le ordenamos
+    a <acronym>BiF</acronym> que muestre los datos por pantalla, con la
+    funcion draw().
+    Siempre hay que especificar
+    que muestre los datos por pantalla, ya que si no lo hacemos, al
+    igual el archivo sera procesado, pero no sera posible ver los resultados.
+    </para>
+    <para>
+    Ahora pasamos a la parte del archivo <acronym>XML</acronym> o sea
+el archivo <filename>.bif</filename>
+    el cual posee el codigo que sera procesado por los widgets.
+    <screen>
+    &lt;BifRoot&gt;
+    &lt;TitleBox title="Funciono"&gt;
+    Esta es la primera prueba con BiF
+    &lt;BifLink TEXT="Lunix" HREF="http://www.lunix.com.ar"&gt;
+    &lt;/BifLink&gt;
+    &lt;/TitleBox&gt;
+    &lt;/BifRoot&gt;
+    </screen>
+    El primer Tag BifRoot es el que de fine el principio y fin de la
+    pagina, alli
+    se encuentran el HEAD, y el FOOTER, a la vez se incluyen las hojas
+    de estilo incluidas
+    en el directorio "css" que a su ves esta dentro del directorio del
+    Skin que estemos
+    usando. El Tag TitleBox lo utilizamos para generar una tabla de
+    contenido, el atributo
+    TITLE, es para introducir un texto a modo titulo en la celda de
+    encabezado de la tabla.
+    Y por ultimo el Tag BifLink, es para llamar al widget BifLink, que
+    se encarga de generar un
+    links, referido a sus atributos: TEXT es el texto a mostrar, y HREF
+    la URL a linkear, hay
+    otro atrbuto mas que no inclui por que no hacia falta que es TARGET
+    que se define igual que
+    los demas atributos. Al final debemos cerrar todos los TAG en su
+    mismo orden de aparicion,
+    no se puede hacer algo como esto :
+    <screen>
+    &lt;BifRoot&gt;
+    &lt;TitleBox title="Funciono"&gt;
+    Esta es la primera prueba con BiF
+    &lt;BifLink TEXT="Lunix" HREF="http://www.lunix.com.ar"&gt;
+    &lt;/BifRoot&gt;
+    &lt;/TitleBox&gt;
+    &lt;/BifLink&gt;
+    </screen>
+    Ya que nos daria errores en el codigo <acronym>XML</acronym>
+    </para>
+    </section>
+  </chapter>
+  <chapter>
+        <title>Creando mis Skins</title>
+        <section>
+        <title>Creando mi Skins personal</title>
+    <para>
+      Pasos a seguir:
+      <orderedlist>
+        <listitem>
+          <para>Modificar <filename>skins.txt</filename></para>
+        </listitem>
+        <listitem>
+          <para>Agregar en <filename>$app_dir/Skins/</filename></para>
+          <orderedlist>
+            <listitem>
+              <para>Archivo <filename>SkinNOMBRE.php</filename></para>
+            </listitem>
+            <listitem>
+              <para>Directorio <filename
+              class="directory">NOMBRE</filename> con los tpl, css,
+              img, etc.</para>
+            </listitem>
+          </orderedlist>
+        </listitem>
+      </orderedlist>
+    </para>
+	<para>
+	Para empezar a crear sus propios Skins, convendria que viera el Skin
+	por Default que viene con <acronym>BiF</acronym>, el cual es bastante 
+	plano (o sea que no viene con imagenes, css, etc.), asi va a 
+	poder compreder perfectamente el codigo <acronym>HTML</acronym> en
+	conjunto con los contenidos a rellenar por los  widgets que son las
+	cadenas cerradas entre llaves <screen>{}</screen>. Si revisa el directorio
+	<filename class="directory">Skins/Default</filename> se va a encontrar
+	con unos cuantos archivos con la extension <filename>.tpl</filename>, esos
+	archivos son los templates o Skins a ser rellenados por contenido generado
+	por los Widget, lo unico que hacen los templates es generar la apariencia, 
+	pero por lo general no ademas de la apariencia no possen contenido alguno, 
+	solo puede ser el pie de pagina, los encabezados <acronym>HTML</acronym> con
+	el titulo de la pagina, palabras clave, aunque no es el objetivo, se puede 
+	incluir contenido extra en los templates, pero eso generaria un diseño menos
+	dinámico. 
+	</para>
+    </section>
+        <section>
+        <title>Comenzando con el Skin</title>
+	<para>
+	Cada Widget esta relacionado con un template en particular el cual 
+	por lo general posee su mismo nombre, pero en letras minusculas, pero
+	no siempre sucede eso, como el caso de los Widget FT* los cuales dependen
+	del templete <filename>ftitem.tpl</filename>, y del los template 
+	<filename>form*.tpl</filename>. Ademas cada Skin posee un archivo
+	<acronym>PHP</acronym> el cual define algunos contenidos, atributos, 
+	directorios o imagenes dentro del Skin, los cuales seran utilizados 
+	por los Widgets.
+	Por ejemplo en el Skin FSM, el archivo <acronym>PHP</acronym> que
+	contiene los datos del Skin es <filename>SkinFSM.php</filename>, para
+	una vision mas exacta del directorio de Skins y del Skin FSM
+         </para>
+        <screen>
+Skins/
+|-- FSM/
+|   |-- adherenteslist.tpl
+|   |-- bifroot.tpl
+|   |-- columncnt.tpl
+|   |-- css/
+|   |   |-- bifinclude.css
+|   |   |-- titlebox.css
+|   |   |-- titlebox2.css
+|   |   |-- titlebox3.css
+|   |   `-- titlebox4.css
+|   |-- fsmroot.tpl
+|   |-- ftitem.tpl
+|   |-- images/
+|   |   |-- ..... (Un monton de archivos)
+|   |   |-- titulo-fondo.png
+|   |   `-- titulo.png
+|   |-- listaorganizacion.tpl
+|   |-- listapersona.tpl
+|   |-- rowcnt.tpl
+|   |-- titlebox.tpl
+|   |-- titlebox2.tpl
+|   |-- titlebox3.tpl
+|   `-- titlebox4.tpl
+`-- SkinFSM.php
+	</screen>
+        <para>
+        Como veras hay un directorio <filename>FSM</filename> dentro del 
+	directorio Skins, luego un directorio <filename>css</filename>, donde
+	estan incluidas algunas hojas de estilo para algunos widgets, los nombres
+	del las hojas de estilo son el mismo nombre que el del widget, por ejemplo
+	para el widget TitleBox la hoja de estilo debe ser <filename>titlebox.css</filename>.
+	Ademas como se ven en pantalla, estan presentes los archivos <filename>*.tpl</filename>,
+	y un archivo con informacion de Skin <filename>SkinFSM.php</filename>
+         </para>
+<screen>
+&lt;?php
+
+class SkinFSM extends PEAR {
+
+  var $reg = array();
+
+  function SkinFSM() {
+   
+    $this->PEAR(); // default init.
+    global $sys_dir,$app_dir;
+
+    $this->path_dir = "$sys_dir/Skins/FSM/";// Directorio donde se ubican los
+                                            // archivos de templates .tpl
+    $this->path_url = 'Skins/FSM/';         // URL, usada por los css, y las
+                                            // imagenes para la pagina
+    $this->reg =                                // valores del Skin
+       array(
+	'titlebox_WIDTH'  =>'100%',
+	'titlebox2_WIDTH' =>'100%',
+	'titlebox3_WIDTH' =>'100%',
+	'titlebox4_WIDTH' =>'100%',
+	     );
+  }
+
+  function _SkinFSM() {
+    // Destructor
+  }
+
+  function resource($string,$type='_template') {
+    if ($type == '_template') {
+      $file = $this->path_dir . $string . ".tpl";
+      if (file_exists($file)) {
+	return($file);
+      }else{
+	return;
+      }
+    } 
+    // Buscar las hojas de estilo css
+    else if ($type == '_css') {
+      $file= $this->path_url . 'css/' . $string . '.css';
+      global $app_dir;
+      if (file_exists("$app_dir/$file")) {
+	return($file);
+      }else{
+	return;
+      }
+    }
+    else if ($type == '_layout') {
+      $file= $this->path_dir . 'layouts/' . $string . '.tpl';
+      if (file_exists($file)) {
+	return($file);
+      }else{
+	return;
+      }
+    } 
+    else
+      return $this->reg["$string" . "$type"];
+  }
+}
+?&gt;
+</screen>
+        <para>
+	Como se ve aqui se indica el directorio de ubicacion de los templates 
+	del Skin, de sus hojas de estilo, y de sus imagenes.
+	Un ejemplo de template simple seria:
+        <screen>
+        &lt;a&gt; class="biflink" {HREF} {TARGET}>{TEXT}&lt;/a&gt;	
+	</screen>
+	Los elementos contenidos entre {}, son los RAWfields y HTMLfields 
+	que son definidos dentro del archivo del Widget.
+        </para>
+	<para>
+	La variable $app_dir se refiere al directorio de ejecucion de la 
+	aplicacion, o sea el direcotorio donde tenemos nuestros codigos que 
+	utilizan BiF3. En cambio la variable $sys_dir se refiere al directorio
+	donde esta instalado <application>BiF3</application> 
+	que por default es <filename>/usr/share/bif3</filename>.
+	</para>
+	</section>
+  </chapter>
+  <!-- ///////////////////////////////////////////////////// -->
+  <chapter>
+    <title>Descripción de widgets</title>
+    <para><!-- FIXME -->Falta completar...</para>
+  </chapter>
+  <!-- ///////////////////////////////////////////////////// -->
+  <chapter>
+    <title>Creando mis widgets</title>
+    <para>
+      Seguramente te preguntarás: "¿Cómo creo un widget?". En la
+      siguiente sección veremos un widget simple.
+    </para>
+    <section>
+      <title>Widget Simple</title>
+    <para>
+      Veamos un ejemplo inicial donde sólo hay que mostrar un poco de
+      <acronym>HTML</acronym>:
+
+        <screen>
+          class NOMBRE extends BifWidget {
+            function NOMBRE ($attrs = array()) {
+              $this->BifWidget($attrs);
+            }
+          }
+        </screen>
+        Y además tiene que existir un archivo llamado
+        <filename>skins/NombreSkin/NOMBRE.tpl</filename> con el
+        contenido <acronym>HTML</acronym> a mostrar, ejemplo:
+
+        <screen>
+          &lt;DIV color="green"&gt;Hola!&lt;/DIV&gt;&lt;BR&gt;&lt;BR&gt;
+          &lt;DIV color="black"&gt;Este es mi primer widget.&lt;/DIV&gt;
+        </screen>
+
+        Desde nuestro archivo <filename>index.php</filename> podemos
+        ejecutar:
+
+        <screen>
+          &lt;?php
+          $w =& new NOMBRE;
+          $w->draw();
+          ?&gt;
+        </screen>
+
+        Ahora vamos a agregar un poco de dificultad. Digamos que
+        quiero que aparezca la fecha en mi widget entonces debemos
+        incorporar la función
+        <function>innerDraw()</function>. Primero vamos a cambiar el
+        contenido del archivo <filename>NOMBRE.tpl</filename>:
+
+        <screen>
+          &lt;DIV color="green"&gt;Hola!&lt;/DIV&gt;&lt;BR&gt;&lt;BR&gt;
+          &lt;DIV color="black"&gt;El día {DATE} escribí mi primer
+widget.&lt;/DIV&gt;
+        </screen>
+
+        Y tendríamos que escribir el widget de la siguiente manera:
+
+        <screen>
+          class NOMBRE extends BifWidget {
+            function NOMBRE ($attrs = array()) {
+              $this->BifWidget($attrs);
+            }
+
+            function innerDraw() {
+              $this->attributes["DATE"] = "5 de Julio de 2003";
+              $this->RAWfields = array("DATE");
+              $this->parseStructures();
+            }
+          }
+        </screen>
+
+        La función <function>innerDraw()</function> está diseñada
+        principalmente para cambiar las variables de
+        <classname>BifWidget</classname>: <varname>RAWfields</varname>
+        y <varname>HTMLfields</varname> y luego llamar a
+        <function>parseStructures()</function>. Estos detalles no son
+importantes
+        para el recién iniciado en BIF, de todas formas quienes sientan la
+curiosidad
+        de saber más, el archivo
+<filename>Widgets/Base/widget.BifWidget.php</filename>
+         contiene todo.
+      </para>
+    </section>
+  </chapter>
+  <!-- ///////////////////////////////////////////////////// -->
+  <chapter>
+    <title>Referencias</title>
+    <variablelist>
+      <varlistentry>
+        <term><varname>BifWidget</varname></term>
+        <listitem>
+          <para>
+	  Widget principal del cual dependen todos los demas.
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><varname>attributes</varname></term>
+        <listitem>
+          <para>Atributos generales de widget, los cuales
+	  pueden definirse en el archivo SkinNOMBRE.php dentro
+	  del directorio Skins
+	  </para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><varname>HTMLFields</varname></term>
+        <listitem>
+          <para>Array que contiene los valores de
+            <varname>attributes</varname> para ser reemplazados con
+            <function>parseStructures()</function> en el
+            template. Anteponiendo el nombre en la forma
+            «ATTRB="VALOR"» o una cadena vacía en caso de no contener
+            nada. Especial para los atributos <acronym>HTMLs</acronym>
+            a reemplazar como BGCOLOR, WIDTH y similares.</para>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term><varname>RAWfields</varname></term>
+        <listitem>
+          <para>Array que contiene los valores de
+            <varname>attributes</varname> para ser reemplazados con
+            <function>parseStructures()</function> en el
+            template.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </chapter>
+  <appendix id="gfdl">
+    <title>GNU Free Documentation License</title>
+    <!-- - GNU Project - Free Software Foundation (FSF) -->
+    <!-- LINK REV="made" HREF="mailto:webmasters@gnu.org" -->
+
+
+    <!-- section>
+    <title>GNU Free Documentation License</title -->
+
+    <para>Version 1.1, March 2000</para>
+
+    <blockquote>
+      <para>Copyright (C) 2000  Free Software Foundation, Inc.
+        59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+        Everyone is permitted to copy and distribute verbatim copies
+        of this license document, but changing it is not allowed.</para>
+    </blockquote>
+
+    <section id="gfdl-0">
+      <title>PREAMBLE</title>
+
+      <para>The purpose of this License is to make a manual, textbook,
+        or other written document "free" in the sense of freedom: to
+        assure everyone the effective freedom to copy and redistribute it,
+        with or without modifying it, either commercially or
+        noncommercially.  Secondarily, this License preserves for the
+        author and publisher a way to get credit for their work, while not
+        being considered responsible for modifications made by
+        others.</para>
+
+      <para>This License is a kind of "copyleft", which means that
+        derivative works of the document must themselves be free in the
+        same sense.  It complements the GNU General Public License, which
+        is a copyleft license designed for free software.</para>
+
+      <para>We have designed this License in order to use it for
+manuals
+        for free software, because free software needs free documentation:
+        a free program should come with manuals providing the same
+        freedoms that the software does.  But this License is not limited
+        to software manuals; it can be used for any textual work,
+        regardless of subject matter or whether it is published as a
+        printed book.  We recommend this License principally for works
+        whose purpose is instruction or reference.</para>
+    </section>
+
+    <section id="gfdl-1">
+      <title>APPLICABILITY AND DEFINITIONS</title>
+
+      <para>This License applies to any manual or other work that
+        contains a notice placed by the copyright holder saying it can be
+        distributed under the terms of this License.  The "Document",
+        below, refers to any such manual or work.  Any member of the
+        public is a licensee, and is addressed as "you".</para>
+
+      <para>A "Modified Version" of the Document means any work
+        containing the Document or a portion of it, either copied
+        verbatim, or with modifications and/or translated into another
+        language.</para>
+
+      <para>A "Secondary Section" is a named appendix or a front-matter
+        section of the Document that deals exclusively with the
+        relationship of the publishers or authors of the Document to the
+        Document's overall subject (or to related matters) and contains
+        nothing that could fall directly within that overall subject.
+        (For example, if the Document is in part a textbook of
+        mathematics, a Secondary Section may not explain any mathematics.)
+        The relationship could be a matter of historical connection with
+        the subject or with related matters, or of legal, commercial,
+        philosophical, ethical or political position regarding
+        them.</para>
+
+      <para>The "Invariant Sections" are certain Secondary Sections
+        whose titles are designated, as being those of Invariant Sections,
+        in the notice that says that the Document is released under this
+        License.</para>
+
+      <para>The "Cover Texts" are certain short passages of text that
+        are listed, as Front-Cover Texts or Back-Cover Texts, in the
+        notice that says that the Document is released under this
+        License.</para>
+
+      <para>A "Transparent" copy of the Document means a
+        machine-readable copy, represented in a format whose specification
+        is available to the general public, whose contents can be viewed
+        and edited directly and straightforwardly with generic text
+        editors or (for images composed of pixels) generic paint programs
+        or (for drawings) some widely available drawing editor, and that
+        is suitable for input to text formatters or for automatic
+        translation to a variety of formats suitable for input to text
+        formatters.  A copy made in an otherwise Transparent file format
+        whose markup has been designed to thwart or discourage subsequent
+        modification by readers is not Transparent.  A copy that is not
+        "Transparent" is called "Opaque".</para>
+
+      <para>Examples of suitable formats for Transparent copies include
+        plain ASCII without markup, Texinfo input format, LaTeX input
+        format, SGML or XML using a publicly available DTD, and
+        standard-conforming simple HTML designed for human modification.
+        Opaque formats include PostScript, PDF, proprietary formats that
+        can be read and edited only by proprietary word processors, SGML
+        or XML for which the DTD and/or processing tools are not generally
+        available, and the machine-generated HTML produced by some word
+        processors for output purposes only.</para>
+
+      <para>The "Title Page" means, for a printed book, the title page
+        itself, plus such following pages as are needed to hold, legibly,
+        the material this License requires to appear in the title page.
+        For works in formats which do not have any title page as such,
+        "Title Page" means the text near the most prominent appearance of
+        the work's title, preceding the beginning of the body of the
+        text.</para>
+    </section>
+
+    <section id="gfdl-2">
+      <title>VERBATIM COPYING</title>
+
+      <para>You may copy and distribute the Document in any medium,
+        either commercially or noncommercially, provided that this
+        License, the copyright notices, and the license notice saying this
+        License applies to the Document are reproduced in all copies, and
+        that you add no other conditions whatsoever to those of this
+        License.  You may not use technical measures to obstruct or
+        control the reading or further copying of the copies you make or
+        distribute.  However, you may accept compensation in exchange for
+        copies.  If you distribute a large enough number of copies you
+        must also follow the conditions in section 3.</para>
+
+      <para>You may also lend copies, under the same conditions stated
+        above, and you may publicly display copies.</para>
+    </section>
+
+    <section id="gfdl-3">
+      <title>COPYING IN QUANTITY</title>
+
+      <para>If you publish printed copies of the Document numbering
+more
+        than 100, and the Document's license notice requires Cover Texts,
+        you must enclose the copies in covers that carry, clearly and
+        legibly, all these Cover Texts: Front-Cover Texts on the front
+        cover, and Back-Cover Texts on the back cover.  Both covers must
+        also clearly and legibly identify you as the publisher of these
+        copies.  The front cover must present the full title with all
+        words of the title equally prominent and visible.  You may add
+        other material on the covers in addition.  Copying with changes
+        limited to the covers, as long as they preserve the title of the
+        Document and satisfy these conditions, can be treated as verbatim
+        copying in other respects.</para>
+
+      <para>If the required texts for either cover are too voluminous
+to
+        fit legibly, you should put the first ones listed (as many as fit
+        reasonably) on the actual cover, and continue the rest onto
+        adjacent pages.</para>
+
+      <para>If you publish or distribute Opaque copies of the Document
+        numbering more than 100, you must either include a
+        machine-readable Transparent copy along with each Opaque copy, or
+        state in or with each Opaque copy a publicly-accessible
+        computer-network location containing a complete Transparent copy
+        of the Document, free of added material, which the general
+        network-using public has access to download anonymously at no
+        charge using public-standard network protocols.  If you use the
+        latter option, you must take reasonably prudent steps, when you
+        begin distribution of Opaque copies in quantity, to ensure that
+        this Transparent copy will remain thus accessible at the stated
+        location until at least one year after the last time you
+        distribute an Opaque copy (directly or through your agents or
+        retailers) of that edition to the public.</para>
+
+      <para>It is requested, but not required, that you contact the
+        authors of the Document well before redistributing any large
+        number of copies, to give them a chance to provide you with an
+        updated version of the Document.</para>
+    </section>
+
+    <section id="gfdl-4">
+      <title>MODIFICATIONS</title>
+
+      <para>You may copy and distribute a Modified Version of the
+        Document under the conditions of sections 2 and 3 above, provided
+        that you release the Modified Version under precisely this
+        License, with the Modified Version filling the role of the
+        Document, thus licensing distribution and modification of the
+        Modified Version to whoever possesses a copy of it.  In addition,
+        you must do these things in the Modified Version:</para>
+
+      <orderedlist numeration="upperalpha">
+        <listitem><para>Use in the Title Page
+            (and on the covers, if any) a title distinct from that of the
+            Document, and from those of previous versions (which should, if
+            there were any, be listed in the History section of the
+            Document).  You may use the same title as a previous version if
+            the original publisher of that version gives permission.</para>
+        </listitem>
+
+        <listitem><para>List on the Title Page,
+            as authors, one or more persons or entities responsible for
+            authorship of the modifications in the Modified Version,
+            together with at least five of the principal authors of the
+            Document (all of its principal authors, if it has less than
+            five).</para>
+        </listitem>
+
+        <listitem><para>State on the Title page
+            the name of the publisher of the Modified Version, as the
+            publisher.</para>
+        </listitem>
+
+        <listitem><para>Preserve all the
+            copyright notices of the Document.</para>
+        </listitem>
+
+        <listitem><para>Add an appropriate
+            copyright notice for your modifications adjacent to the other
+            copyright notices.</para>
+        </listitem>
+
+        <listitem><para>Include, immediately
+            after the copyright notices, a license notice giving the public
+            permission to use the Modified Version under the terms of this
+            License, in the form shown in the Addendum below.</para>
+        </listitem>
+
+        <listitem><para>Preserve in that license
+            notice the full lists of Invariant Sections and required Cover
+            Texts given in the Document's license notice.</para>
+        </listitem>
+
+        <listitem><para>Include an unaltered
+            copy of this License.</para>
+        </listitem>
+
+        <listitem><para>Preserve the section
+            entitled "History", and its title, and add to it an item stating
+            at least the title, year, new authors, and publisher of the
+            Modified Version as given on the Title Page.  If there is no
+            section entitled "History" in the Document, create one stating
+            the title, year, authors, and publisher of the Document as given
+            on its Title Page, then add an item describing the Modified
+            Version as stated in the previous sentence.</para>
+        </listitem>
+
+        <listitem><para>Preserve the network
+            location, if any, given in the Document for public access to a
+            Transparent copy of the Document, and likewise the network
+            locations given in the Document for previous versions it was
+            based on.  These may be placed in the "History" section.  You
+            may omit a network location for a work that was published at
+            least four years before the Document itself, or if the original
+            publisher of the version it refers to gives permission.</para>
+        </listitem>
+
+        <listitem><para>In any section entitled
+            "Acknowledgements" or "Dedications", preserve the section's
+            title, and preserve in the section all the substance and tone of
+            each of the contributor acknowledgements and/or dedications
+            given therein.</para>
+        </listitem>
+
+        <listitem><para>Preserve all the
+            Invariant Sections of the Document, unaltered in their text and
+            in their titles.  Section numbers or the equivalent are not
+            considered part of the section titles.</para>
+        </listitem>
+
+        <listitem><para>Delete any section
+            entitled "Endorsements".  Such a section may not be included in
+            the Modified Version.</para>
+        </listitem>
+
+        <listitem><para>Do not retitle any
+            existing section as "Endorsements" or to conflict in title with
+            any Invariant Section.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>If the Modified Version includes new front-matter sections
+        or appendices that qualify as Secondary Sections and contain no
+        material copied from the Document, you may at your option
+        designate some or all of these sections as invariant.  To do this,
+        add their titles to the list of Invariant Sections in the Modified
+        Version's license notice.  These titles must be distinct from any
+        other section titles.</para>
+
+      <para>You may add a section entitled "Endorsements", provided it
+        contains nothing but endorsements of your Modified Version by
+        various parties--for example, statements of peer review or that
+        the text has been approved by an organization as the authoritative
+        definition of a standard.</para>
+
+      <para>You may add a passage of up to five words as a Front-Cover
+        Text, and a passage of up to 25 words as a Back-Cover Text, to the
+        end of the list of Cover Texts in the Modified Version.  Only one
+        passage of Front-Cover Text and one of Back-Cover Text may be
+        added by (or through arrangements made by) any one entity.  If the
+        Document already includes a cover text for the same cover,
+        previously added by you or by arrangement made by the same entity
+        you are acting on behalf of, you may not add another; but you may
+        replace the old one, on explicit permission from the previous
+        publisher that added the old one.</para>
+
+      <para>The author(s) and publisher(s) of the Document do not by
+        this License give permission to use their names for publicity for
+        or to assert or imply endorsement of any Modified Version.</para>
+    </section>
+
+    <section id="gfdl-5">
+      <title>COMBINING DOCUMENTS</title>
+
+      <para>You may combine the Document with other documents released
+        under this License, under the terms defined in section 4 above for
+        modified versions, provided that you include in the combination
+        all of the Invariant Sections of all of the original documents,
+        unmodified, and list them all as Invariant Sections of your
+        combined work in its license notice.</para>
+
+      <para>The combined work need only contain one copy of this
+        License, and multiple identical Invariant Sections may be replaced
+        with a single copy.  If there are multiple Invariant Sections with
+        the same name but different contents, make the title of each such
+        section unique by adding at the end of it, in parentheses, the
+        name of the original author or publisher of that section if known,
+        or else a unique number.  Make the same adjustment to the section
+        titles in the list of Invariant Sections in the license notice of
+        the combined work.</para>
+
+      <para>In the combination, you must combine any sections entitled
+        "History" in the various original documents, forming one section
+        entitled "History"; likewise combine any sections entitled
+        "Acknowledgements", and any sections entitled "Dedications".  You
+        must delete all sections entitled "Endorsements."</para>
+    </section>
+
+    <section id="gfdl-6">
+      <title>COLLECTIONS OF DOCUMENTS</title>
+
+      <para>You may make a collection consisting of the Document and
+        other documents released under this License, and replace the
+        individual copies of this License in the various documents with a
+        single copy that is included in the collection, provided that you
+        follow the rules of this License for verbatim copying of each of
+        the documents in all other respects.</para>
+
+      <para>You may extract a single document from such a collection,
+        and distribute it individually under this License, provided you
+        insert a copy of this License into the extracted document, and
+        follow this License in all other respects regarding verbatim
+        copying of that document.</para>
+    </section>
+
+    <section id="gfdl-7">
+      <title>AGGREGATION WITH INDEPENDENT WORKS</title>
+
+      <para>A compilation of the Document or its derivatives with other
+        separate and independent documents or works, in or on a volume of
+        a storage or distribution medium, does not as a whole count as a
+        Modified Version of the Document, provided no compilation
+        copyright is claimed for the compilation.  Such a compilation is
+        called an "aggregate", and this License does not apply to the
+        other self-contained works thus compiled with the Document, on
+        account of their being thus compiled, if they are not themselves
+        derivative works of the Document.</para>
+
+      <para>If the Cover Text requirement of section 3 is applicable to
+        these copies of the Document, then if the Document is less than
+        one quarter of the entire aggregate, the Document's Cover Texts
+        may be placed on covers that surround only the Document within the
+        aggregate.  Otherwise they must appear on covers around the whole
+        aggregate.</para>
+    </section>
+
+    <section id="gfdl-8">
+      <title>TRANSLATION</title>
+
+      <para>Translation is considered a kind of modification, so you
+may
+        distribute translations of the Document under the terms of section
+        4.  Replacing Invariant Sections with translations requires
+        special permission from their copyright holders, but you may
+        include translations of some or all Invariant Sections in addition
+        to the original versions of these Invariant Sections.  You may
+        include a translation of this License provided that you also
+        include the original English version of this License.  In case of
+        a disagreement between the translation and the original English
+        version of this License, the original English version will
+        prevail.</para>
+    </section>
+
+    <section id="gfdl-9">
+      <title>TERMINATION</title>
+
+      <para>You may not copy, modify, sublicense, or distribute the
+        Document except as expressly provided for under this License.  Any
+        other attempt to copy, modify, sublicense or distribute the
+        Document is void, and will automatically terminate your rights
+        under this License.  However, parties who have received copies, or
+        rights, from you under this License will not have their licenses
+        terminated so long as such parties remain in full
+        compliance.</para>
+    </section>
+
+    <section id="gfdl-10">
+      <title>FUTURE REVISIONS OF THIS LICENSE</title>
+
+      <para>The Free Software Foundation may publish new, revised
+        versions of the GNU Free Documentation License from time to time.
+        Such new versions will be similar in spirit to the present
+        version, but may differ in detail to address new problems or
+        concerns.  See <ulink
+url="http://www.gnu.org/copyleft/">http://www.gnu.org/copyleft/</ulink>
+.</para>
+
+      <para>Each version of the License is given a distinguishing
+        version number.  If the Document specifies that a particular
+        numbered version of this License "or any later version" applies to
+        it, you have the option of following the terms and conditions
+        either of that specified version or of any later version that has
+        been published (not as a draft) by the Free Software Foundation.
+        If the Document does not specify a version number of this License,
+        you may choose any version ever published (not as a draft) by the
+        Free Software Foundation.</para>
+    </section>
+
+    <section id="gfdl-11">
+      <title>How to use this License for your documents</title>
+
+      <para>To use this License in a document you have written, include
+        a copy of the License in the document and put the following
+        copyright and license notices just after the title page:</para>
+
+      <blockquote><para>
+          Copyright (c)  YEAR  YOUR NAME.
+          Permission is granted to copy, distribute and/or modify this
+document
+          under the terms of the GNU Free Documentation License, Version 1.1
+          or any later version published by the Free Software Foundation;
+          with the Invariant Sections being LIST THEIR TITLES, with the
+          Front-Cover Texts being LIST, and with the Back-Cover Texts being
+LIST.
+          A copy of the license is included in the section entitled "GNU
+          Free Documentation License".
+        </para></blockquote>
+
+      <para>If you have no Invariant Sections, write "with no Invariant
+        Sections" instead of saying which ones are invariant.  If you have
+        no Front-Cover Texts, write "no Front-Cover Texts" instead of
+        "Front-Cover Texts being LIST"; likewise for Back-Cover
+        Texts.</para>
+
+      <para>If your document contains nontrivial examples of program
+        code, we recommend releasing these examples in parallel under your
+        choice of free software license, such as the GNU General Public
+        License, to permit their use in free software.</para>
+    </section>
+  </appendix>
+</book>

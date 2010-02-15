@@ -1,0 +1,4 @@
+# watch control file for uscan
+# Site            Directory  Pattern               Version  Script
+version=0.4.2
+http://bif.lunix.com.ar  /tgz    bif3-(.*)\.tgz  debian   uupdate
