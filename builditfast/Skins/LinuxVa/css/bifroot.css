@@ -1,0 +1,26 @@
+A:link {
+	color:#FF9900;
+}
+A:hover {
+	color:#FF9900;
+	background: #FFD700;
+}
+A:visited {
+	color:#FF9900;
+}
+A:active {
+	color:#FF9900;
+	background: #FF0000;
+}
+
+body {
+        color:#8ca99c;
+	background-color: #FFFFFF;
+	scrollbar-face-color: #FF9900;
+	scrollbar-highlight-color: #FF9900;
+	scrollbar-shadow-color: #FF9900;
+	scrollbar-3dlight-color: #FF9900;
+	scrollbar-arrow-color:  #FF9900;
+	scrollbar-track-color: #FF9900;
+	scrollbar-darkshadow-color: #FF9900;
+}

@@ -1,0 +1,42 @@
+<bifroot>
+<SuperiorLinks />
+<table width="100%">
+<tr>
+<td valign="top" align="right" width="50%">
+<titlebox2 title="Download RPM">
+ This has being tested under Mandrake, but it's 
+probably compatible with other distrobutions, drop me a
+mail if you tryed it. 
+<a href="mailto:ncesar@lunix.com.ar?subject=I've tryed in other RPM System besides Mandrake.">ncesar@lunix.com.ar</a>
+ <FileList dir="rpm" />
+</titlebox2>
+</td>
+
+<td valign="top" align="left" width="50%">
+<titlebox2 title="Download DEB">
+This is packed by Sergio Cayuqueo, please joing the 
+<a href="dev.php">mailing list</a> to tell your experience under Debian.
+ <FileList dir="deb" />
+</titlebox2>
+</td>
+</tr>
+
+
+<tr>
+<td valign="top" align="right" width="50%">
+<titlebox2 title="Source (?)">
+<b>"Source" package</b>, use ONLY if rpm and/or deb didn't work:
+ <FileList dir="tgz" />
+</titlebox2>
+</td>
+
+<td valign="top" align="left"  width="50%">
+<titlebox2 title="Others">
+ <FileList dir="gentoo" />
+</titlebox2>
+</td>
+</tr>
+</table>
+
+
+</bifroot>

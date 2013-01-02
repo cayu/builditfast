@@ -1,0 +1,79 @@
+FONT	{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+TD		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+BODY	{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+P		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+DIV		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+
+body {background: #CAD5DD;color:#000000;font:12px Verdana,Arial,Helvetica,sans-serif;	
+        scrollbar-face-color: #ABBED1;
+	scrollbar-arrow-color:  #46505E;
+	scrollbar-track-color: #D1DCE7;
+	scrollbar-highlight-color: #C8D3E1;
+	scrollbar-3dlight-color: #EAEFF4;
+	scrollbar-shadow-color: #7492B6;
+	scrollbar-darkshadow-color: #3A5370;}
+	
+.bodyline	{ background-color: #CAD5DD; border: 1px solid #000000 }
+A:link {color:#525E6E;FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica;text-decoration:underline}
+A:active {color:#525E6E;FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica;text-decoration:underline}
+A:visited {color:#525E6E;FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica;text-decoration:underline}
+A:hover {color:#939DAE;FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica;text-decoration:underline}
+.title 		 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 14px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.content 	 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica}
+.block-title {BACKGROUND: none; COLOR: #ECF0F4; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica}
+.storytitle  {BACKGROUND: none; COLOR: #ECF0F4; FONT-SIZE: 12px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.storycat	 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 12px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+.boxtitle 	 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.boxcontent  {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica}
+.option 	 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.tiny		 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.small		 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 9px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+/* Form elements */
+input,textarea,select {
+	color : #000000;
+	text-indent : 2px;
+	background-color : #E3EAF0;
+	font: normal 11px Verdana, Arial, Helvetica, sans-serif;
+}
+
+
+/* The buttons used for bbCode styling in message post */
+input.button {
+	background-color: #EAEFF4;
+	color: #000000;
+	font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* The main submit button option */
+input.mainoption {
+	background-color : #FAFAFA;
+	font-weight : bold;
+	font-size: 11px; font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+/* None-bold submit button */
+input.liteoption {
+	background-color : #FAFAFA;
+	font-weight : normal;
+	
+}
+
+/* This is the line in the posting page which shows the rollover
+  help line. This is actually a text box, but if set to be the same
+  colour as the background no one will know ;)
+*/
+.helpline { background-color: #D7E0E9; border-style: none; }
+
+/* Quote & Code blocks */
+.code {
+	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #006600;
+	background-color: #F3F7FA; border: #525E6E; border-style: dotted;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}
+
+.quote {
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #3E4753; line-height: 125%;
+	background-color: #F3F7FA; border: #525E6E; border-style: dotted;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}

@@ -1,0 +1,48 @@
+<bifroot>
+<SuperiorLinks />
+
+<title1 text="Join our community!" />
+If you ar BIF developer or you want to be one, we recomend to join our
+mailing list. 
+
+<table width="750">
+<tr><td valign="top" >
+<TitleBox title="Sign up" width="100%">
+
+<FT Method="POST" ACTION="http://listas.lunix.com.ar/cgi-bin/mailman/subscribe/bif-devel">
+
+<FTText      name="email"     size="30" />
+<FTText      name="fullname"  size="30" description="Full name: "/>
+<FTPassword  name="pw"        size="15" description="Password: " />
+<FTPassword  name="pw-conf"   size="15" description="Repeat Password: " />
+
+<FTSelect name="language">
+ <FormSelectItem value="en" Selected="true" desc="English" />
+ <FormSelectItem value="es" desc="Español" />
+</FTSelect>
+
+<FTSubmit name="email-button" value="Subscribe" />
+ </FT>
+</TitleBox>
+</td><td valign="top">
+<TitleBox title="CVS access" width="100%">
+
+Download BIF from CVS it's the latest release, 
+but may be broken.. as always <b>USE IT AT YOUR OWN RISK</b> <br />
+When it asks for password just hit <b>RETURN</b> key.
+<pre>
+export CVSROOT=:pserver:anoncvs@cvs.lunix.com.ar:/usr/local/cvs-publico/BIF
+cvs login
+cvs co BIF3
+cvs co BIF3-site
+</pre>
+
+- <b>I don't understand what's that up there...</b><br />
+Don't panic, for you we have a special
+<a href="http://www.lunix.com.ar/cgi-bin/viewcvs.cgi"><b>web access to the CVS</b></a>
+ with a nice
+<a href="http://www.lunix.com.ar/cgi-bin/viewcvs.cgi/root.tar.gz?view=tar">Download tarball</a> link
+
+</TitleBox>
+</td></tr></table>
+</bifroot>
