@@ -30,6 +30,7 @@ docs:
 clean:
 # remove back-up files
 	rm -f `find -name "*~"`
+	rm -f `find -name "*.svn"`
 
 mrproper: clean
 # remove CVS info, only use it if you are EXTREAMLLY sure
