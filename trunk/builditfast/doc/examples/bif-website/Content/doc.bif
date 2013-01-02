@@ -1,0 +1,23 @@
+<bifroot>
+<SuperiorLinks />
+
+<titlebox title="We need you!">
+Documentation is <b>the</b> goal for release 0.3.x So, BIF developers
+are making a great effort to release as much english documentation as
+posible. But, if you think we are not trying that hard, come and join
+our comunity.
+</titlebox>
+
+<titlebox title="New around here?">
+<!-- TODO maybe a widget: list of tutorials -->
+<ul>
+<li /><b>Install</b> Step-by-step install tutorial.
+<li /><b>First</b> This tutorial is the first you should read to understand
+BIF philosophy.
+<li /><a href="doc/API/BIF3/tutorial_CreatingWidgets.pkg.html"><b>Creating
+widgets</b></a> This tutorial should be second.
+<li /><a href="doc/API/BIF3/index.html"><b>API reference and more tutorials</b></a>
+</ul>
+</titlebox>
+
+</bifroot>

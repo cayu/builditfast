@@ -1,0 +1,52 @@
+FONT	{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+TD		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+BODY	{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+P		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+DIV		{FONT-FAMILY: Verdana,Helvetica; FONT-SIZE: 10px}
+
+
+body {background: #F8F8F8;color:#000000;font:11px Verdana,Arial,Helvetica,sans-serif;scrollbar-3dlight-color:#c2c2c2;
+scrollbar-face-color: #7E98CB;
+	scrollbar-highlight-color: #C4D2ED;
+	scrollbar-shadow-color: #7E98CB;
+	scrollbar-3dlight-color: #C4D2ED;
+	scrollbar-arrow-color:  #021A4A;
+	scrollbar-track-color: #C4D2ED;
+	scrollbar-darkshadow-color: #021A4A;
+
+/* General font families for common tags */
+font{ font-family: Verdana, Arial, Helvetica, sans-serif }
+p, td	{ font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; }
+hr	{ height: 0px; border: solid #021A4A 0px; border-top-width: 1px;}
+a	{ color: #043698; text-decoration: none; }
+a:hover	{ color: #A00000; text-decoration: underline; }
+
+
+/* This is the border line & background colour round the entire page */
+.bodyline	{ background-color:#F8F8F8; border: #04369B; border-style: solid; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; border-left-width: 1px }
+
+A:link {color:#043698;FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica;FONT-WEIGHT: bold; text-decoration:none}
+A:active {color:#FF0000;FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica;FONT-WEIGHT: bold; text-decoration:none}
+A:visited {color:#043698;FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica;FONT-WEIGHT: bold; text-decoration:none}
+A:hover {color:#A00000;FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica;FONT-WEIGHT: bold; text-decoration:underline}
+.title 		 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.content 	 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica}
+.block-title {BACKGROUND: none; COLOR: #FFFF00; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Helvetica}
+.storytitle  {BACKGROUND: none; COLOR: #FFFF00; FONT-SIZE: 11px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.storycat	 {BACKGROUND: none; COLOR: #FFFFFF; FONT-SIZE: 11px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: underline}
+.boxtitle 	 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 11px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.boxcontent  {BACKGROUND: none; COLOR: #0000000; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Helvetica}
+.option 	 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-WEIGHT: bold; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.tiny		 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 10px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+.small		 {BACKGROUND: none; COLOR: #000000; FONT-SIZE: 9px; FONT-WEIGHT: normal; FONT-FAMILY: Verdana, Helvetica; TEXT-DECORATION: none}
+
+
+/* Form elements */
+input,textarea, select {
+	color : #000000;
+	font-family : Verdana, Arial, Helvetica, sans-serif;
+	font-size : 11px;
+	font-weight : normal;
+}
+
+

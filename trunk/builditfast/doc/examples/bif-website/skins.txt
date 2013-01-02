@@ -1,0 +1,16 @@
+# ***********************************************************
+#  file 'skins.txt': User configuration file
+#  ----------------------------------------------
+#  
+#  This file has skins configuration.
+#  They are listed in order to be included.
+#  must exist either
+#      "$sys_dir/Skins/$skin.php" 
+#  or
+#      "$app_dir/Skins/$skin.php" 
+# 
+# ***********************************************************
+#  comments? join bif-devel@listas.lunix.com.ar
+# ***********************************************************
+SkinDefault
+SkinAqua

@@ -1,0 +1,9 @@
+body	{ font-family: Arial, Verdana, Helvetica; font-size: 10pt; background: #FFFFFF }
+.chico	{ font-family: Arial, Verdana, Helvetica; font-size: 8pt; background: #FFFFFF }
+a	{ color: #336699; text-decoration: none; font-size: 10pt; }
+a:hover	{ color: #999999; text-decoration: underline }
+.contenido { font-family: Arial, Verdana, Helvetica; font-size: 10pt; background: #FFFFFF }
+.filelist { font-family: Arial, Verdana, Helvetica; font-size: 10pt; border: 0pt; background: #FFFFFF }
+.filecontent { font-family: Arial; font-size: 10pt; border: 0pt; background: #FFFFFF }
+.nuevo { color: red }
+code { font-size: 10pt; border: 0pt; background: #FFFFFF }

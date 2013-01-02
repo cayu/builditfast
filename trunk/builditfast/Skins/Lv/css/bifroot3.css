@@ -1,0 +1,49 @@
+A:link {
+	color:#9abed2;
+	text-decoration:none;
+	background-color: transparent;
+	}
+A:hover {
+	color:#9abed2;
+	/*color : #ff6600;*/
+	text-decoration:none;
+	}
+A:visited {
+	color:#9abed2;
+	text-decoration:none;
+	}
+A:active {
+	/*color:#9abed2;*/
+	color : #ff6600;
+	text-decoration:none;
+	}
+a.highlight {
+	background-color: #fcc;
+	}
+img {
+	border: 0;
+	}
+ul  {
+	margin: 2px;
+	padding: 2px;
+	list-style: decimal inside;
+	text-align: left;
+	}
+li  {
+	margin-left: 2px;
+	list-style: square inside;
+	color: #2F5376
+	}
+body {
+	margin: 0;
+	padding: 0;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	background-color: #FFFFFF;
+	scrollbar-face-color: #FF9900;
+	scrollbar-highlight-color: #FF9900;
+	scrollbar-shadow-color: #FF9900;
+	scrollbar-3dlight-color: #FF9900;
+	scrollbar-arrow-color:  #FF9900;
+	scrollbar-track-color: #FF9900;
+	scrollbar-darkshadow-color: #FF9900;
+}

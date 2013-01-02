@@ -1,0 +1,3 @@
+<FilesMatch "\.(inc|example|ini|txt|info|gz|sh|sql)$">
+        deny from all
+</FilesMatch>

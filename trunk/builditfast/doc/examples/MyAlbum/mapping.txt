@@ -1,0 +1,5 @@
+# mapping.txt  - maps logical names to components and thier parameters
+#
+# format:
+# logical_id:Component[:Observer.Stub[,Observer.Stub...]]
+#

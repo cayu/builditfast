@@ -1,0 +1,22 @@
+.titlebox3text
+{
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 8pt; color: #000033;
+   text-align: justify ;
+   padding: 14
+}
+.titlebox3title
+{
+   font-family: Helvetica, sans-serif;
+   font-size: 12pt;
+   font-weight: bold;
+   color: #FFFFFF;
+   text-align: center;
+}
+.titlebox3
+{
+BORDER-BOTTOM: rgb(0,0,0) 1px solid;
+BORDER-TOP: rgb(0,0,0) 1px solid;
+BORDER-RIGHT: rgb(0,0,0) 1px solid;
+BORDER-LEFT: rgb(0,0,0) 1px solid;
+}

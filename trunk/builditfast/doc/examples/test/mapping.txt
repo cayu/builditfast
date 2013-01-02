@@ -1,0 +1,13 @@
+# mapping.txt  - maps logical names to components and thier parameters
+#
+# format:
+# logical_id:Component[:Observer.Stub[,Observer.Stub...]]
+a_auth:IDM_auth(insert)
+m_auth:IDM_auth(modify)
+a_news:IDM_News(insert)
+m_news:IDM_News(modify)
+a_links:IDM_links(insert)
+m_links:IDM_links(modify)
+u_file:FileUpload(incoming)
+u_img:ImageUpload(uploaded-images)
+wiki:SimpleWiki(wiki/;IndexPage;600)

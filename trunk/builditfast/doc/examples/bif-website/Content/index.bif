@@ -1,0 +1,54 @@
+<bifroot>
+<table>
+<tr>
+<td>
+<img src="images/bif-logo.png" alt="Build it Fast"/>
+</td>
+<td>
+<titlebox title="What is?">
+Build it Fast (BIF) is a PHP Framework.  It contains several classes
+that help you develop complex Web applications in a short amount of
+time. It brings the concept of the 'widget' to Web development. It
+features Cascade Skins and transparent session management.
+</titlebox>
+
+<titlebox title="Uh? What is?...really">
+Mmh it seems you are not familiar with web development. Maybe this
+software isn't for you. It's meant to make PHP programers' life much
+easier, and making better web applications.
+</titlebox>
+</td>
+</tr>
+</table>
+
+<SuperiorLinks />
+
+<table width="100%">
+<tr>
+<td valign="top" width="50%">
+<titlebox2 title="Download latest">
+Aha... looking for latest BIF?? <br />
+<b>RPM</b>: <FileRecent dir="rpm" /><br />
+<b>DEB</b>: <FileRecent dir="deb" /><br />
+<b>"Source" package</b>, use ONLY if rpm and/or deb didn't work:
+ <FileRecent dir="tgz" />
+</titlebox2>
+</td>
+<td valign="top"  width="50%">
+<titlebox2 title="Read Documentation">
+Now you've installed BIF, right? need a hand with the classic 'hello
+world'?<br />
+<a>Hello World Example</a>FIXME! get a simple .tgz
+<br />
+<br />
+MMMh.... yo haven't installed BIF? It's easy:<br />
+<a>Installation guide</a>FIXME! translate the spanish instalation
+<br />
+<br />
+Need more?
+<a href="doc.php">BIF documentation page</a>
+</titlebox2>
+</td>
+</tr>
+</table>
+</bifroot>

@@ -1,0 +1,16 @@
+.titleboxtext  
+{ 
+   font-family: Verdana, Arial, Helvetica, sans-serif;
+   font-size: 8pt; color: #000033;
+   text-align: justify ; 
+   padding: 14
+}
+.titleboxtitle 
+{  
+   font-family: Helvetica, sans-serif;
+   font-variant: small-caps;
+   font-size: 12pt;
+   font-weight: bold;
+   color: #636e8e; 
+   text-align: center;
+}
