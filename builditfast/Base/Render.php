@@ -39,7 +39,7 @@ function startElement($parser, $name, $attrs) {
     $obj =& new $name(array_map(html2specialchars,$attrs));
     $good=array_filter($attrs,debug_entities);
     if (! empty($good)) {
-      print_r($good);
+//      print_r($good);
     }
     //$obj =& new $name($attrs);
   }
