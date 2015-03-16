@@ -1,0 +1,1 @@
+Build it Fast (BIF) is a PHP Framework. It contains several classes that help you develop complex Web applications in a short amount of time. It brings the concept of the 'widget' to Web development. It features Cascade Skins and transparent session management.
